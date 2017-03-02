@@ -1,0 +1,2 @@
+class SnippetVersion < ApplicationRecord
+end

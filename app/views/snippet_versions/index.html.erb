@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Snippet Versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Version</th>
+      <th>Doc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @snippet_versions.each do |snippet_version| %>
+      <tr>
+        <td><%= snippet_version.content %></td>
+        <td><%= snippet_version.version %></td>
+        <td><%= snippet_version.doc %></td>
+        <td><%= link_to 'Show', snippet_version %></td>
+        <td><%= link_to 'Edit', edit_snippet_version_path(snippet_version) %></td>
+        <td><%= link_to 'Destroy', snippet_version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Snippet Version', new_snippet_version_path %>
