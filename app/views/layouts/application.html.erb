@@ -9,6 +9,28 @@
   </head>
 
   <body>
+    <header>
+      <div class="search">
+        <input type="text" class="search-input">
+        <input type="submit" value="Rechercher">
+      </div>
+      <nav>
+        <ul>
+          <%= link_to(snippets_path) do %>
+          <li>Snippets</li>
+          <% end %>
+          <%= link_to(snippets_path) do %>
+          <li>Obejts</li>
+          <% end %>
+          <%= link_to(snippets_path) do %>
+          <li>Profil</li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>

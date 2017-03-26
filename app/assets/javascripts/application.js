@@ -14,6 +14,4 @@
 //= require jquery_ujs
 //= require angular/angular
 //= require_tree .
-
-receta = angular.module('receta',[
-])
+//= require codemirror
