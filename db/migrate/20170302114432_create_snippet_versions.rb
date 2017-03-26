@@ -4,7 +4,7 @@ class CreateSnippetVersions < ActiveRecord::Migration[5.0]
       t.text :content, null: false
       t.string :version, null: false
       t.string :doc
-
+      t.string :comment
       t.timestamps
     end
   end

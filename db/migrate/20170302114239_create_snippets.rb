@@ -4,6 +4,7 @@ class CreateSnippets < ActiveRecord::Migration[5.0]
       t.string :description
       t.string :lang, null: false
       t.boolean :abstract, default: false
+      t.string :name, null: false
       #user
       t.timestamps
     end

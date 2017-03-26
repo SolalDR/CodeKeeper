@@ -15,3 +15,24 @@
 //= require angular/angular
 //= require_tree .
 //= require codemirror
+
+
+CodemirrorManage = {
+  cdMirrorInstance : [],
+  launchInstances: function(){
+    for(i=0; i<this.textareas.length; i++){
+      this.cdMirrorInstance.push(CodeMirror.fromTextArea(this.textareas[i], {
+        lineNumbers: true,
+        mode: this.textareas[i].getAttribute("data-cdMirrorMode")
+      }));
+    }
+  },
+  init:function(){
+    this.textareas = document.getElementsByClassName("codemirror-content");
+    this.launchInstances();
+  }
+}
+
+window.onload = function(){
+  CodemirrorManage.init();
+}

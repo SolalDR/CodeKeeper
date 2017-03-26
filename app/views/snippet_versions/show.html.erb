@@ -1,13 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @snippet.name %> - <%= @snippet_version.version %></h1>
 <p>
   <strong>Content:</strong>
   <%= @snippet_version.content %>
-</p>
-
-<p>
-  <strong>Version:</strong>
-  <%= @snippet_version.version %>
 </p>
 
 <p>
@@ -16,4 +12,4 @@
 </p>
 
 <%= link_to 'Edit', edit_snippet_version_path(@snippet_version) %> |
-<%= link_to 'Back', snippet_versions_path %>
+<%= link_to 'Back', snippet_path(@snippet_version.snippet_id) %>

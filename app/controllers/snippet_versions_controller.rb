@@ -1,6 +1,5 @@
 class SnippetVersionsController < ApplicationController
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
-
   # GET /snippet_versions
   # GET /snippet_versions.json
   def index
@@ -15,6 +14,12 @@ class SnippetVersionsController < ApplicationController
   # GET /snippet_versions/new
   def new
     @snippet_version = SnippetVersion.new
+    if params[:id]
+      @snippet_version.snippet_id = params[:id]
+      @snippet = Snippet.find(params[:id]);
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /snippet_versions/1/edit
@@ -25,7 +30,6 @@ class SnippetVersionsController < ApplicationController
   # POST /snippet_versions.json
   def create
     @snippet_version = SnippetVersion.new(snippet_version_params)
-
     respond_to do |format|
       if @snippet_version.save
         format.html { redirect_to @snippet_version, notice: 'Snippet version was successfully created.' }
@@ -65,10 +69,11 @@ class SnippetVersionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_snippet_version
       @snippet_version = SnippetVersion.find(params[:id])
+      @snippet = Snippet.find(@snippet_version.snippet_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_version_params
-      params.require(:snippet_version).permit(:content, :version, :doc)
+      params.require(:snippet_version).permit(:content, :version, :doc, :comment, :snippet_id)
     end
 end
