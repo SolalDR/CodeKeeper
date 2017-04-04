@@ -1,3 +1,51 @@
 body {
   padding-top: 100px;
 }
+
+.wrapper {
+  width: 1080px;
+  display: block;
+  margin: auto;
+}
+
+@media screen and (max-width: 1180px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+
+.btn {
+  padding: 5px 10px;
+  border: 0;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-weight: 100;
+  border-radius: 5px;
+  &.btn-light {
+    background-color: white;
+    color: black;
+  }
+  &.btn-colored {
+    background-color: $color-3;
+    color: black;
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 5px;
+    width: 80px;
+    background-color: $color-2;
+  }
+}

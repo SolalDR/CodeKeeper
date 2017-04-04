@@ -14,10 +14,11 @@ class SnippetVersionsController < ApplicationController
   # GET /snippet_versions/new
   def new
     @snippet_version = SnippetVersion.new
-    if params[:id]
-      @snippet_version.snippet_id = params[:id]
-      @snippet = Snippet.find(params[:id]);
+    if params[:snippet_id] && Snippet.where(id: params[:snippet_id]).length>0
+      @snippet = Snippet.find(params[:snippet_id])
+      @snippet_version.snippet_id = params[:snippet_id]
     else
+      flash[:notice] = "Pas de snippet avec l'id : #{params[:snippet_id]}"
       redirect_to root_path
     end
   end
@@ -32,7 +33,7 @@ class SnippetVersionsController < ApplicationController
     @snippet_version = SnippetVersion.new(snippet_version_params)
     respond_to do |format|
       if @snippet_version.save
-        format.html { redirect_to @snippet_version, notice: 'Snippet version was successfully created.' }
+        format.html { redirect_to @snippet_version.snippet, notice: 'Snippet version was successfully created.' }
         format.json { render :show, status: :created, location: @snippet_version }
       else
         format.html { render :new }
@@ -46,7 +47,7 @@ class SnippetVersionsController < ApplicationController
   def update
     respond_to do |format|
       if @snippet_version.update(snippet_version_params)
-        format.html { redirect_to @snippet_version, notice: 'Snippet version was successfully updated.' }
+        format.html { redirect_to @snippet_version.snippet, notice: 'Snippet version was successfully updated.' }
         format.json { render :show, status: :ok, location: @snippet_version }
       else
         format.html { render :edit }
@@ -74,6 +75,6 @@ class SnippetVersionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_version_params
-      params.require(:snippet_version).permit(:content, :version, :doc, :comment, :snippet_id)
+      params.require(:snippet_version).permit(:content, :doc, :comment, :snippet_id, :type_version)
     end
 end

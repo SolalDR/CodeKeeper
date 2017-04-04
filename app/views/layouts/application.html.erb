@@ -3,32 +3,43 @@
   <head>
     <title>CodeKeeper</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <div class="search">
-        <input type="text" class="search-input">
-        <input type="submit" value="Rechercher">
+      <div class="wrapper">
+        <div class="search">
+          <input type="text" class="search-input">
+          <input type="submit" value="Rechercher">
+          <button class="btn btn-colored" id="sidebar-right-btn">Filtres</button>
+        </div>
+        <nav>
+          <ul>
+            <%= link_to(snippets_path) do %>
+            <li>Snippets</li>
+            <% end %>
+            <!-- <%= link_to(snippets_path) do %>
+            <li>Objets</li>
+            <% end %> -->
+            <%= link_to(snippets_path) do %>
+            <li><%= t("header.profil") %></li>
+            <% end %>
+          </ul>
+        </nav>
       </div>
-      <nav>
-        <ul>
-          <%= link_to(snippets_path) do %>
-          <li>Snippets</li>
-          <% end %>
-          <%= link_to(snippets_path) do %>
-          <li>Obejts</li>
-          <% end %>
-          <%= link_to(snippets_path) do %>
-          <li>Profil</li>
-          <% end %>
-        </ul>
-      </nav>
     </header>
-    <%= yield %>
+    <div id="sidebar-right" class="filter-menu hide">
+      <ul>
+        <%  @languages.each do |l| %>
+        <li><%= l.cd %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
     <footer>
 
     </footer>

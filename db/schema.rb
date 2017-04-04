@@ -10,26 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326212051) do
+ActiveRecord::Schema.define(version: 20170404150702) do
+
+  create_table "langs", force: :cascade do |t|
+    t.string   "cd",         limit: 3,                        null: false
+    t.string   "cdMirror",             default: "javascript"
+    t.string   "lib",                                         null: false
+    t.string   "bgColor",                                     null: false
+    t.string   "color",                default: "#FFFFFF",    null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
 
   create_table "snippet_versions", force: :cascade do |t|
-    t.text     "content",    null: false
-    t.string   "version",    null: false
+    t.text     "content",                      null: false
+    t.string   "version",    default: "1.0.0", null: false
     t.string   "doc"
     t.string   "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "snippet_id"
     t.index ["snippet_id"], name: "index_snippet_versions_on_snippet_id"
   end
 
   create_table "snippets", force: :cascade do |t|
     t.string   "description"
-    t.string   "lang",                        null: false
     t.boolean  "abstract",    default: false
     t.string   "name",                        null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "lang_id"
+    t.index ["lang_id"], name: "index_snippets_on_lang_id"
   end
 
 end

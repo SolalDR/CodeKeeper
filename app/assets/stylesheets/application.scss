@@ -10,14 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require codemirror
  *= require_self
+ *= require codemirror/themes/bespin
  */
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-
-@import "core/_variable";
-@import "core/_scaffolds";
-@import "core/_header";
+@import "core/variable";
+@import "core/_mixin";
+@import "core/scaffolds";
+@import "core/header";

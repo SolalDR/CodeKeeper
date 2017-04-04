@@ -14,20 +14,24 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
+
   <div class="field">
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
 
   <div class="field">
-    <%= f.label :lang %>
-    <%= f.text_field :lang %>
+    <% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
+    <%= select_tag "snippet[lang_id]", options_for_select(langs_array) %>
   </div>
 
-  <div class="field">
-    <%= f.label :abstract %>
-    <%= f.check_box :abstract %>
-  </div>
+  <% snip = SnippetVersion.new %>
+  <%= f.fields_for :snippet_versions, snip do |ff| %>
+    <%= ff.text_field :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
+    <%= ff.text_area :doc, placeholder: "Documentation" %>
+    <%= ff.text_field :comment, placeholder: "Commentaire" %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

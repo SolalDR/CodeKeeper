@@ -10,7 +10,7 @@
 
   <p>
     <strong>Lang:</strong>
-    <%= @snippet.lang %>
+    <%= @snippet.lang.lib %>
   </p>
 
   <p>
@@ -24,7 +24,7 @@
     <% end %>
   </div>
 
-  <%= link_to 'New version', new_version_from_snippet_path(@snippet) %> |
+  <%= link_to 'New version', new_snippet_snippet_version_path(@snippet) %> |
   <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
   <%= link_to 'Back', snippets_path %>
 
