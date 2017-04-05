@@ -10,10 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require Request
 //= require angular/angular
-//= require_tree .
 //= require codemirror
 //= require codemirror/keymaps/vim
 //= require codemirror/modes/ruby
@@ -51,7 +49,114 @@ function initSideBar(){
   }, false)
 }
 
+
+
+function createElement(str){
+  var frag = document.createElement("fragment");
+  frag.innerHTML = str;
+  return frag.firstChild;
+}
+
+SearchManage = {
+  responses : [],
+  getDataForm:function(){
+    this.data = {
+      text: this.textField.value
+    }
+  },
+  callback:function(response){
+    var self = SearchManage;
+    self.responses = [];
+    self.responseSearch.innerHTML = "";
+    var snippets = JSON.parse(response);
+
+    if(snippets){
+      console.log(snippets);
+      self.display();
+      var protoReplace = "";
+      for(i=0; i<snippets.length; i++){
+        var protoReplace = self.prototype;
+        protoReplace = protoReplace.replace(/__id__/g, snippets[i].id);
+        protoReplace = protoReplace.replace(/__name__/g, snippets[i].name);
+        self.responses.push(createElement(protoReplace));
+        self.responseSearch.appendChild(self.responses[i]);
+      }
+    }
+    // self.responseSearch.firstChild.focus();
+  },
+  initTabEvent:function(){
+
+  },
+  closeTabEvent:function(){
+
+  },
+
+
+  initEvents:function(){
+    var self = this;
+    this.searchForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      self.getDataForm();
+      self.request = new Request({
+        url : "/search",
+        data : "text="+self.textField.value,
+        method: "POST",
+        json: false,
+        callback : self.callback
+      }).send();
+      return false;
+    }, false)
+
+    this.responseSearch.addEventListener("click", function(){
+      self.close();
+    }, false)
+
+    this.textField.addEventListener("keypress", function(){
+      self.getDataForm();
+      self.request = new Request({
+        url : "/search",
+        data : "text="+self.textField.value,
+        method: "POST",
+        json: false,
+        callback : self.callback
+      }).send();
+    }, false)
+
+    window.addEventListener("keypress", function(e){
+      // var keyCode = 
+      // retour => 8
+      // tab => 9
+      // enter => 13
+      // right => 39
+      // left => 37
+      // top => 38
+      // bottom => 40
+    }, false)
+  },
+  display:function(){
+    this.responseSearch.className = this.responseSearch.className.replace("closed", "visible");
+    this.initTabEvent();
+  },
+  close:function(){
+    var self = this;
+    this.responseSearch.className = this.responseSearch.className.replace("visible", "closed");
+    this.closeTabEvent();
+    setTimeout(function(){
+      self.responseSearch.innerHTML = "";
+    }, 400)
+  },
+  init:function(){
+    this.searchForm = document.getElementById("form-search");
+    this.textField = document.getElementById("search-input");
+    this.responseSearch = document.getElementById("response-search");
+    this.prototype  = this.responseSearch.getAttribute("data-prototype");
+
+    this.initEvents();
+  }
+}
+
 window.onload = function(){
   CodemirrorManage.init();
+  SearchManage.init();
   initSideBar();
 }

@@ -1,0 +1,40 @@
+#response-search {
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - 60px);
+  top: 60px;
+  background-color: rgba(0,0,0,.8);
+  display: flex;
+  justify-content: space-around;
+  z-index: 11;
+  align-items: center;
+  @include transition(.3s);
+  &.closed {
+    @include transform(scaleY(0));
+  }
+  &.visible {
+    @include transform(scaleY(1));
+  }
+
+  a:focus {
+    .response {
+      background-color: red;
+      @include transform(scale(1.1));
+    }
+  }
+
+  .response {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border-radius: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    @include transform(scale(1));
+    .title {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
