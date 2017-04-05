@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if !@snippets || params[:text]==""
       render json: false
     else
-      render json: @snippets
+      render json: @snippets.to_json(include: :lang)
     end
   end
 

@@ -13,7 +13,7 @@
         <div class="search">
           <%= form_tag search_path, id:"form-search", remote: true do %>
           <input type="text" name="text" class="search-input" id="search-input" autofocus="true">
-          <input type="submit" value="Rechercher">
+          <!-- <input type="submit" value="Rechercher"> -->
           <button class="btn btn-colored" id="sidebar-right-btn">Filtres</button>
           <% end %>
         </div>
@@ -39,7 +39,7 @@
         <% end %>
       </ul>
     </div>
-    <div id="response-search" class="closed" data-prototype="<a href='/snippets/__id__'><div class='response'><p class='title'>__name__</p></div></a>"></div>
+    <div id="response-search" class="closed" data-prototype="<a href='/snippets/__id__'><div class='response'><p class='title'>__name__</p><p class='lang'>__lang__</p></div></a>"></div>
     <div class="wrapper">
       <%= yield %>
     </div>
