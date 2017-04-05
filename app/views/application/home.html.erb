@@ -2,9 +2,11 @@
   <h2>Derniers snippets</h2>
   <div class="snippets">
     <% @snippets.each do |snippet| %>
+      <%= link_to snippet do %>
       <div class="snippet">
         <div class="title"><%= snippet %></div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

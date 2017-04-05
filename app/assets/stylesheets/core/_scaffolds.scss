@@ -30,9 +30,13 @@ body {
     background-color: $color-3;
     color: black;
   }
+  &.btn-dark {
+    background-color: $color-1;
+    color: white;
+  }
 }
 
-h2 {
+h2, h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
   color: black;

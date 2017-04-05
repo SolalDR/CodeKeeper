@@ -2,7 +2,6 @@
   <% if snippet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
-
       <ul>
       <% snippet.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,18 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
 
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
     <%= select_tag "snippet[lang_id]", options_for_select(langs_array) %>
   </div>
@@ -29,11 +28,22 @@
   <% snip = SnippetVersion.new %>
   <%= f.fields_for :snippet_versions, snip do |ff| %>
     <%= ff.text_field :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
-    <%= ff.text_area :doc, placeholder: "Documentation" %>
-    <%= ff.text_field :comment, placeholder: "Commentaire" %>
+
+    <div class="form-group">
+      <%= ff.label :doc %>
+      <%= ff.text_area :doc, class:"form-control" %>
+    </div>
+
+    <%= ff.hidden_field :version %>
+
+    <div class="form-group">
+      <%= ff.label :comment %>
+      <%= ff.text_field :comment, class:"form-control" %>
+    </div>
+
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enregistrer" , class:"btn btn-colored" %>
   </div>
 <% end %>

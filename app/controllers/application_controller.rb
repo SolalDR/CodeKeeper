@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :get_lang
 
   def home
-    # @snippets = Snippet.all
+    @snippets = Snippet.all
   end
 
   private

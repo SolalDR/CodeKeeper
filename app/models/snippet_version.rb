@@ -13,15 +13,20 @@
 #
 
 class SnippetVersion < ApplicationRecord
-  belongs_to :snippet
   VERSION_TYPE = ["big", "medium", "small"]
+  belongs_to :snippet
 
   def type_version=(version)
     version = version.to_i
-    if (0..2).include? version
-      current_version = self.snippet.snippet_versions.last.version.split(".").map{ |v| v.to_i }
-      current_version[version]+= 1
-      self.version = current_version.join(".")
+    last = self.snippet.snippet_versions.last
+    if last
+      current_version = last.version.split(".").map{ |v| v.to_i }
+      if (0..2).include? version
+        current_version[version]+= 1
+        self.version = current_version.join(".")
+      end
+    else
+      self.version = "1.0.0"
     end
   end
   def type_version

@@ -24,10 +24,9 @@ class SnippetsController < ApplicationController
   # POST /snippets
   # POST /snippets.json
   def create
-    @snippet = Snippet.new(snippet_params)
-
+    @snippet = Snippet.new snippet_params.except(:snippet_versions_attributes)
     respond_to do |format|
-      if @snippet.save
+      if @snippet.save && @snippet.update(snippet_params.slice(:snippet_versions_attributes))
         format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
         format.json { render :show, status: :created, location: @snippet }
       else
@@ -62,6 +61,7 @@ class SnippetsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_snippet
       @snippet = Snippet.find(params[:id])
@@ -69,6 +69,7 @@ class SnippetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
-      params.require(:snippet).permit(:description, :lang_id, :abstract, :name, snippet_versions:[:content, :version, :doc, :comment])
+      params.require(:snippet).permit(:description, :lang_id, :abstract, :name, snippet_versions_attributes: [:content, :version, :doc, :comment])
     end
+
 end
