@@ -2,7 +2,7 @@
 <div>
   <p id="notice"><%= notice %></p>
 
-  <h1><%= @snippet.name %></h1>
+  <h1 class="code"><%= @snippet.name %></h1>
   <p>
     <strong>Description:</strong>
     <%= @snippet.description %>
@@ -12,10 +12,13 @@
     <strong>Lang:</strong>
     <%= @snippet.lang.lib %>
   </p>
-
   <p>
-    <strong>Abstract:</strong>
-    <%= @snippet.abstract %>
+    <% version = @snippet.snippet_versions.last %>
+    <% content = version.content %>
+    <!-- <textarea class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror %>"><%= content %></textarea> -->
+    <%= form_for version do |f| %>
+    <%= f.text_area :content, class:"codemirror-content", data: {cdMirrorMode: @snippet.lang.cdMirror} %>
+    <% end %>
   </p>
 
   <div class="version">

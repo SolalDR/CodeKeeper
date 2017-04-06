@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @snippet.name %> - <%= @snippet_version.version %></h1>
-<p>
+<!-- <p>
   <strong>Content:</strong>
   <%= @snippet_version.content %>
-</p>
-
+</p> -->
+<%= form_for @snippet_version do |f| %>
+<%= f.text_area :content, class:"codemirror-content", data: {cdMirrorMode: @snippet_version.snippet.lang.cdMirror} %>
+<% end %>
 <p>
   <strong>Doc:</strong>
   <%= @snippet_version.doc %>

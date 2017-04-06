@@ -20,6 +20,7 @@
   a {
     text-decoration: none;
     margin: 50px;
+    outline: none;
     @include transition(.4s);
     .response {
       width: 150px;

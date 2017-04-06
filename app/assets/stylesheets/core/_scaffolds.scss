@@ -1,11 +1,17 @@
 body {
   padding-top: 100px;
+  font-family: $main-font;
 }
 
 .wrapper {
   width: 1080px;
   display: block;
   margin: auto;
+}
+
+.code {
+  font-family: $code-font !important;
+  text-transform: none !important;
 }
 
 @media screen and (max-width: 1180px) {
