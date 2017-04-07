@@ -1,24 +1,14 @@
-# README
+# CodeKeeper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<a href="https://codeclimate.com/github/SolalDR/CodeKeeper"><img src="https://codeclimate.com/github/SolalDR/CodeKeeper/badges/gpa.svg" /></a>
 
-Things you may want to cover:
+This rails application is made for all the developpers who likes to create their own snippets & functions. If you get tired of repeating yourself pasting the same code in each project, this online tool is made for you.
 
-* Ruby version
+## Configuration
 
-* System dependencies
+* Ruby version : 2.3.1
+* Rails version : 5.0.2
+* Database : sqlite
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## You want to help
+<a href="https://codeclimate.com/github/SolalDR/CodeKeeper/TODO.md">To do</a>
