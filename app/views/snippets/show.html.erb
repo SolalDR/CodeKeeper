@@ -23,7 +23,7 @@
 
   <div class="version">
     <% @snippet.snippet_versions.each do |version| %>
-      <p><%= link_to "Version : "+version.version, version %></p>
+      <p><%= link_to "Version : "+version.version, version %> - <%= link_to "Destroy", version, method: :delete, data: { confirm: "Are you sure?" } %></p>
     <% end %>
   </div>
 

@@ -12,15 +12,25 @@
   <% end %>
 
   <div class="">
-    <%= f.label :content %>
-    <%= f.text_area :content, class:"codemirror-content", data: {cdMirrorMode: "javascript"} %>
+    <% if @snippet.snippet_versions.last
+      content= @snippet.snippet_versions.last.content
+    else
+      content = ""
+    end %>
+    <label for="">Le contenu actuel est celui de la dernière version du commit</label>
+    <%= f.text_area :content, value: content, class:"codemirror-content", data: {cdMirrorMode: "javascript"} %>
   </div>
 
 
 
   <div class="form-group">
     <%= f.label :type_version %>
-    <%= f.text_field :type_version, class:"form-control" %>
+      <% SnippetVersion::VERSION_TYPE.each do |v| %>
+      <div class="radio-group">
+        <label for=""><%= v[0] %></label>
+        <input type="radio" name="snippet_versions[type_version]" value="<%= v[1] %>">
+      </div>
+      <% end %>
   </div>
 
   <div class="form-group">

@@ -59,6 +59,7 @@ class SnippetVersionsController < ApplicationController
   # DELETE /snippet_versions/1
   # DELETE /snippet_versions/1.json
   def destroy
+    puts "*"*100
     @snippet_version.destroy
     respond_to do |format|
       format.html { redirect_to snippet_versions_url, notice: 'Snippet version was successfully destroyed.' }

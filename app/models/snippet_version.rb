@@ -13,7 +13,7 @@
 #
 
 class SnippetVersion < ApplicationRecord
-  VERSION_TYPE = ["big", "medium", "small"]
+  VERSION_TYPE = [["big", 0], ["medium", 1], ["small", 2]]
   belongs_to :snippet
 
   def type_version=(version)
@@ -30,5 +30,9 @@ class SnippetVersion < ApplicationRecord
     end
   end
   def type_version
+  end
+
+  def getVersionType
+    return self.VERSION_TYPE
   end
 end
