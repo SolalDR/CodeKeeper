@@ -11,4 +11,4 @@ This rails application is made for all the developpers who likes to create their
 * Database : sqlite
 
 ## You want to help
-<a href="https://codeclimate.com/github/SolalDR/CodeKeeper/TODO.md">To do</a>
+<a href="https://github.com/SolalDR/CodeKeeper/TODO.md">To do</a>
