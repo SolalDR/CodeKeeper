@@ -30,7 +30,14 @@ class SnippetVersionsController < ApplicationController
   # POST /snippet_versions
   # POST /snippet_versions.json
   def create
+    @snippet = Snippet.find(snippet_version_params[:snippet_id])
+    @last_version = @snippet.snippet_versions.last
+    puts @last_version.content
     @snippet_version = SnippetVersion.new(snippet_version_params)
+    if @last_version.content == snippet_version_params[:content]
+      redirect_to @snippet, notice: "This version content is the same as before."
+      return nil
+    end
     respond_to do |format|
       if @snippet_version.save
         format.html { redirect_to @snippet_version.snippet, notice: 'Snippet version was successfully created.' }

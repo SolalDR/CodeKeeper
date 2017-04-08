@@ -2,4 +2,4 @@
 
 <%= render 'form', snippet_version: @snippet_version %>
 
-<%= link_to 'Retour', snippet_versions_path %>
+<%= link_to 'Retour', snippet_path(@snippet_version.snippet_id) %>

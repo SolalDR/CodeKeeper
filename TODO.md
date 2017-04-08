@@ -1,3 +1,3 @@
-# Validation de données
+# TODO
 
-- Lors de la création d'une nouvelle version, vérifié que :content est différent de la précédente version
+- Gestion des utilisateurs [DOING]
