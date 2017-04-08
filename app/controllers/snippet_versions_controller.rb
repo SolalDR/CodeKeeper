@@ -11,6 +11,8 @@ class SnippetVersionsController < ApplicationController
   def show
   end
 
+  
+
   # GET /snippet_versions/new
   def new
     @snippet_version = SnippetVersion.new

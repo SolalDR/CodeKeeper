@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-
   root "application#home"
-
-  resources :snippet_versions, only:[:edit, :update, :show, :destroy, :create]
   resources :snippets do
     resources :snippet_versions, only: [:new]
   end
+  resources :snippet_versions, exept: [:new]
 
   post "search", to: "application#search", as: :search
 

@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
 //= require Request
 //= require angular/angular
 //= require codemirror
@@ -218,8 +221,8 @@ SearchManage = {
   }
 }
 
-window.onload = function(){
+window.addEventListener("turbolinks:load", function(){
   CodemirrorManage.init();
   SearchManage.init();
   initSideBar();
-}
+}, false)

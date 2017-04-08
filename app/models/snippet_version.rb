@@ -29,6 +29,7 @@ class SnippetVersion < ApplicationRecord
       self.version = "1.0.0"
     end
   end
+  
   def type_version
   end
 

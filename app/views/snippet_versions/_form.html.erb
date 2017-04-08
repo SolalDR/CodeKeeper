@@ -17,7 +17,7 @@
     else
       content = ""
     end %>
-    <label for="">Le contenu actuel est celui de la dernière version du commit</label>
+    <label for="">Le contenu actuel est celui de la dernière version du snippet</label>
     <%= f.text_area :content, value: content, class:"codemirror-content", data: {cdMirrorMode: "javascript"} %>
   </div>
 
@@ -28,7 +28,7 @@
       <% SnippetVersion::VERSION_TYPE.each do |v| %>
       <div class="radio-group">
         <label for=""><%= v[0] %></label>
-        <input type="radio" name="snippet_versions[type_version]" value="<%= v[1] %>">
+        <input type="radio" name="snippet_version[type_version]" value="<%= v[1] %>" checked>
       </div>
       <% end %>
   </div>
