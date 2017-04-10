@@ -23,6 +23,20 @@
 //= require codemirror/modes/css
 
 // bespin base16-dark hopscotch railscasts
+
+//Crée un élément depuis une string
+function createElement(str){
+  var frag = document.createElement("fragment");
+  frag.innerHTML = str;
+  return frag.firstChild;
+}
+
+
+function toggleDisplay(el, visible, hidden){
+  el.className = el.className.match(visible) ? el.className.replace(visible, hidden) : el.className.replace(hidden, visible);
+}
+
+
 CodemirrorManage = {
   cdMirrorInstance : [],
   launchInstances: function(){
@@ -41,10 +55,6 @@ CodemirrorManage = {
 }
 
 
-function toggleDisplay(el, visible, hidden){
-  el.className = el.className.match(visible) ? el.className.replace(visible, hidden) : el.className.replace(hidden, visible);
-}
-
 function initSideBar(){
   var btn = document.getElementById("sidebar-right-btn");
   var sidebar = document.getElementById("sidebar-right");
@@ -53,13 +63,6 @@ function initSideBar(){
   }, false)
 }
 
-
-
-function createElement(str){
-  var frag = document.createElement("fragment");
-  frag.innerHTML = str;
-  return frag.firstChild;
-}
 
 SearchManage = {
   responses : [],
@@ -221,8 +224,30 @@ SearchManage = {
   }
 }
 
+DropDown = {
+  onClick:function(el, r){
+    var self = this;
+    el.addEventListener("click", function(){
+      for(i=0; i<self.elements.length; i++){
+        if(i!==r){
+          self.elements[i].className = self.elements[i].className.replace("drop-visible", "drop-hidden")
+        }
+      }
+      toggleDisplay(this, "drop-hidden", "drop-visible");
+    }, false)
+  },
+  init:function(){
+    this.elements = document.getElementsByClassName("drop-down-item");
+    for(i=0; i<this.elements.length; i++){
+      this.onClick(this.elements[i], i);
+    }
+  }
+}
+
+
 window.addEventListener("turbolinks:load", function(){
   CodemirrorManage.init();
   SearchManage.init();
+  DropDown.init();
   initSideBar();
 }, false)

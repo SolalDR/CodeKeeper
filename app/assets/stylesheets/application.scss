@@ -17,6 +17,7 @@
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
  @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
+@import "core/reset";
 @import "core/variable";
 @import "core/fonts";
 @import "core/_mixin";
@@ -24,4 +25,5 @@
 @import "core/form";
 @import "core/header";
 
+@import "list";
 @import "search"

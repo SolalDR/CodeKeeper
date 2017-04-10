@@ -9,6 +9,10 @@ body {
   margin: auto;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .code {
   font-family: $code-font !important;
   text-transform: none !important;
@@ -50,7 +54,8 @@ h2, h1 {
   color: black;
   position: relative;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 64px;
+  font-size: 1.7em;
   &::after {
     content: "";
     position: absolute;

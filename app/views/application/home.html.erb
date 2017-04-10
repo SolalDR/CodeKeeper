@@ -3,20 +3,21 @@
   <div class="snippets list-drop-down">
     <% @snippets.each do |snippet| %>
     <div class="snippet drop-down-item drop-hidden">
-      <button class="drop-deploy-button">+</button>
+      <!-- <button class="drop-deploy-button">+</button> -->
       <div class="drop-header">
         <span class="info snippet-type">func</span>
-        <span class="info snippet-lang" style="background-color: <%= snippet.lang.bgColor %>; color: <%= snippet.lang.color %>"><%= snippet.lang.cd %></span>
+        <span class="info snippet-lang uppercase" style="background-color: <%= snippet.lang.bgColor %>; color: <%= snippet.lang.color %>"><%= snippet.lang.cd %></span>
         <p class="drop-header-title"><%= snippet.name %></p>
         <div class="drop-header-right">
-          <button class="info copy"></button>
+          <!-- <button class="info copy"></button> -->
           <span class="date"><%= snippet.updated_at.strftime("%d/%m/%Y") %></span>
         </div>
       </div>
-      <div class="drop-content">
-        <textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="javascript"><%= snippet.snippet_versions.last.content %></textarea>
-        <div>
+      <div class="drop-body">
+        <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
+        <div class="content">
           <p class="description"><%= snippet.description %></p>
+          <%= link_to "Plus d'infos", snippet, class:"btn btn-dark" %>
           <!-- <p>Utiliser dans 4 objets</p> -->
           <!-- <p>Author : Solal</p> -->
         </div>
