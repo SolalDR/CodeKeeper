@@ -27,7 +27,7 @@
 
   <% snip = SnippetVersion.new %>
   <%= f.fields_for :snippet_versions, snip do |ff| %>
-    <%= ff.text_field :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
+    <%= ff.text_area :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
 
     <div class="form-group">
       <%= ff.label :doc %>
