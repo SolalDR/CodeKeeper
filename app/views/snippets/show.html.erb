@@ -1,24 +1,30 @@
 
-<div>
-  <p id="notice"><%= notice %></p>
+<div id="snippet_show">
+  <h1>SNIPPET | <span class="code"><%= @snippet.name %></span></h1>
+  <div>
+    <p class="info uppercase" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>
+    <select id="select_version">
+      <% @snippet.snippet_versions.each_with_index do |v, i| %>
+      <% if i == @snippet.snippet_versions.length-1 %>
+        <option selected value="<%= i %>"><%= v.version %></option>
+      <% else %>
+        <option value="<%= i %>"><%= v.version %></option>
+      <% end %>
+      <% end %>
+    </select>
+  </div>
+  <div id="code">
+  <% @snippet.snippet_versions.each_with_index do |v, i| %>
+    <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>">
+      <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
+    </div>
+  <% end %>
+  </div>
 
-  <h1 class="code"><%= @snippet.name %></h1>
+
   <p>
     <strong>Description:</strong>
     <%= @snippet.description %>
-  </p>
-
-  <p>
-    <strong>Lang:</strong>
-    <%= @snippet.lang.lib %>
-  </p>
-  <p>
-    <% version = @snippet.snippet_versions.last %>
-    <% content = version.content %>
-    <!-- <textarea class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror %>"><%= content %></textarea> -->
-    <%= form_for version do |f| %>
-    <%= f.text_area :content, class:"codemirror-content", data: {cdMirrorMode: @snippet.lang.cdMirror} %>
-    <% end %>
   </p>
 
   <div class="version">

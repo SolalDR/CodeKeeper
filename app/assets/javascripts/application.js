@@ -245,9 +245,40 @@ DropDown = {
 }
 
 
+SnippetVersion = {
+  display:function(rank){
+    for(i=0; i<this.codeVersions.length; i++){
+      this.codeVersions[i].classList.remove("visible");
+      this.codeVersions[i].classList.add("hidden");
+    }
+    this.codeVersions[rank].classList.remove("hidden");
+    this.codeVersions[rank].classList.add("visible");
+  },
+  iniEvents:function(){
+    var self = this;
+    this.select.addEventListener("change", function(){
+      var index = this.selectedIndex;
+      self.display(index);
+    }, false)
+  },
+  init:function(){
+    this.select = document.getElementById("select_version");
+    this.codeVersions = document.getElementsByClassName("code-version");
+    this.select.selectedIndex = this.codeVersions.length-1; 
+    for(i=0; i<this.codeVersions.length; i++){
+      if(!this.codeVersions[i].className.match("visible")){
+        this.codeVersions[i].classList.add("hidden");
+      }
+    }
+    this.iniEvents();
+  }
+}
+
+
 window.addEventListener("turbolinks:load", function(){
   CodemirrorManage.init();
   SearchManage.init();
   DropDown.init();
+  SnippetVersion.init();
   initSideBar();
 }, false)

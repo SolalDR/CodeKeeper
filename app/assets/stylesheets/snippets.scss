@@ -1,3 +1,35 @@
 // Place all the styles related to the Snippets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#snippet_show {
+  h1 {
+    margin-bottom: $medium-pad;
+  }
+  .info {
+    display: inline-block;
+    padding: 8px 10px;
+    background-color: black;
+    color: white;
+    font-weight: 100;
+    height: $medium-pad;
+    border: 0;
+  }
+  #select_version {
+    height: 40px; width: 100px;
+    box-shadow: none;
+    outline: none;
+    .code-version {
+      &.visible {
+        display: block;
+      }
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+  #code {
+    margin-top: $small-pad;
+  }
+
+}

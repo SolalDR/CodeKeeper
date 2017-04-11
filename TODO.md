@@ -4,6 +4,8 @@
 - gérer mode codemirror
 - ajouter champs type au snippet : function | prototype | method | object
 - intégrer snippet#edit
+- créer logo
+- designer + intégrer homepage
 
 # DOING
 - Gestion des utilisateurs
