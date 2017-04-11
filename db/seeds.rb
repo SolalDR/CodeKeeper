@@ -16,7 +16,7 @@ Lang.create(cd: "json", lib: "json", bgColor: "#f1e05a", color: "#000000", cdMir
 
 # Back
 Lang.create(cd: "php", lib: "php", bgColor: "#4F5D95", color: "#ffffff", cdMirror:"php");
-Lang.create(cd: "rb", lib: "ruby", bgColor: "#701516", color: "#ffffff", cdMirror:"ruby");
+Lang.create(cd: "rb", lib: "ruby", bgColor: "#a61414", color: "#ffffff", cdMirror:"ruby");
 Lang.create(cd: "java", lib: "java", bgColor: "#b07219", color: "#ffffff", cdMirror:"javascript");
 Lang.create(cd: "c", lib: "c", bgColor: "#555555", color: "#ffffff", cdMirror:"javascript");
 Lang.create(cd: "swift", lib: "swift", bgColor: "#ffac45", color: "#000000", cdMirror:"javascript");
