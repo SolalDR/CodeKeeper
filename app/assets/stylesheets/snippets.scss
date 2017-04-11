@@ -5,7 +5,9 @@
 #snippet_show {
   h1 {
     margin-bottom: $medium-pad;
+    color: #333;
   }
+
   .info {
     display: inline-block;
     padding: 8px 10px;
@@ -16,9 +18,15 @@
     border: 0;
   }
   #select_version {
-    height: 40px; width: 100px;
+    height: $medium-pad;
+    width: 100px;
     box-shadow: none;
     outline: none;
+    padding: 0;
+    border: 2px solid #f1e05a;
+    float: left;
+    box-sizing: border-box;
+    float: left;
     .code-version {
       &.visible {
         display: block;
@@ -28,8 +36,38 @@
       }
     }
   }
-  #code {
-    margin-top: $small-pad;
+  .body-show {
+    #code {
+      clear: both;
+      padding-top: $medium-pad;
+      width: 600px;
+      display: inline-block;
+      float: left;
+    }
+    .content {
+      padding: $medium-pad $small-pad $small-pad $medium-pad;
+      float: left;
+      width: calc(100% - 600px);
+      strong {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        text-decoration: underline;
+        margin-bottom: $small-pad;
+      }
+      .description {
+        font-weight: 300;
+        color: #333;
+        margin-bottom: $small-pad;
+      }
+      .btn {
+        margin-right: $small-pad;
+        margin-bottom: 16px;
+      }
+    }
   }
-
+  .version {
+    margin-top: $medium-pad;
+    clear: both;
+  }
 }

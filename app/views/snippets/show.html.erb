@@ -1,40 +1,40 @@
 
 <div id="snippet_show">
   <h1>SNIPPET | <span class="code"><%= @snippet.name %></span></h1>
-  <div>
-    <p class="info uppercase" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>
-    <select id="select_version">
+  <div class="header-show">
+    <p class="info uppercase left" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>
+    <select id="select_version" style="border-color: <%= @snippet.lang.bgColor %>;">
       <% @snippet.snippet_versions.each_with_index do |v, i| %>
       <% if i == @snippet.snippet_versions.length-1 %>
-        <option selected value="<%= i %>"><%= v.version %></option>
+        <option selected value="<%= i %>">v.<%= v.version %></option>
       <% else %>
-        <option value="<%= i %>"><%= v.version %></option>
+        <option value="<%= i %>">v.<%= v.version %></option>
       <% end %>
       <% end %>
     </select>
   </div>
-  <div id="code">
-  <% @snippet.snippet_versions.each_with_index do |v, i| %>
-    <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>">
-      <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
+  <div class="body-show">
+    <div id="code">
+    <% @snippet.snippet_versions.each_with_index do |v, i| %>
+      <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>">
+        <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
+      </div>
+    <% end %>
     </div>
-  <% end %>
+    <div class="content">
+      <strong>Description</strong>
+      <p class="description"><%= @snippet.description %></p>
+      <%= link_to "Editer", edit_snippet_path(@snippet), class:"btn btn-dark" %>
+      <%= link_to "Télécharger", edit_snippet_path(@snippet), class:"btn btn-dark" %>
+      <%= link_to 'New version', new_snippet_snippet_version_path(@snippet), class:"btn btn-dark" %>
+    </div>
   </div>
 
-
-  <p>
-    <strong>Description:</strong>
-    <%= @snippet.description %>
-  </p>
-
-  <div class="version">
+  <!-- <div class="version">
     <% @snippet.snippet_versions.each do |version| %>
       <p><%= link_to "Version : "+version.version, version %> - <%= link_to "Destroy", version, method: :delete, data: { confirm: "Are you sure?" } %></p>
     <% end %>
   </div>
-
-  <%= link_to 'New version', new_snippet_snippet_version_path(@snippet) %> |
-  <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-  <%= link_to 'Back', snippets_path %>
+  <%= link_to 'Back', snippets_path %> -->
 
 </div>

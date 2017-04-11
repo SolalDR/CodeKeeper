@@ -1,13 +1,17 @@
 body {
   padding-top: 100px;
   font-family: $main-font;
-  padding-bottom: $big-pad; 
+  padding-bottom: $big-pad;
 }
 
 .wrapper {
   width: 1080px;
   display: block;
   margin: auto;
+}
+
+.left {
+  float: left; 
 }
 
 .uppercase {
