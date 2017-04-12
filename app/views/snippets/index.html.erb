@@ -1,5 +1,5 @@
 <div class="last-snippets">
-  <h2>Tous les snippets</h2>
+  <h2><%= t("snippet.index.title") %></h2>
   <div class="snippets list-drop-down">
     <% @snippets.each do |snippet| %>
     <div class="snippet drop-down-item drop-hidden">
@@ -17,9 +17,9 @@
         <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
         <div class="content">
           <p class="description"><%= snippet.description %></p>
-          <%= link_to "Plus d'infos", snippet, class:"btn btn-dark" %>
-          <%= link_to 'Destroy', snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
-          <%= link_to 'Edit', edit_snippet_path(snippet), class:"btn btn-dark" %>
+          <%= link_to t("actions.more"), snippet, class:"btn btn-dark" %>
+          <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
+          <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
           <!-- <p>Utiliser dans 4 objets</p> -->
           <!-- <p>Author : Solal</p> -->
         </div>
@@ -27,5 +27,5 @@
     </div>
     <% end %>
   </div>
-  <%= link_to 'New Snippet', new_snippet_path, class:"btn btn-colored" %>
+  <%= link_to t("snippet.actions.new"), new_snippet_path, class:"btn btn-colored" %>
 </div>

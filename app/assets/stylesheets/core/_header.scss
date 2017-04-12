@@ -16,6 +16,7 @@ header  {
       border: 0;
       float: left;
       color: black;
+      border-radius: 5px;
     }
     .search-input {
       height: 30px;
@@ -37,6 +38,7 @@ header  {
       border-radius: 0;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      display: none;
     }
   }
 

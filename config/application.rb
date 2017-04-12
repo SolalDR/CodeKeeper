@@ -15,5 +15,7 @@ module CodeKeeper
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
     config.assets.precompile += ["codemirror*", "codemirror/**/*"]
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)
+    config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.{rb,yml}"]
+    config.i18n.default_locale = :fr
   end
 end

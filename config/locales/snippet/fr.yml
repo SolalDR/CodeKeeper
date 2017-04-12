@@ -1,0 +1,17 @@
+fr:
+  snippet:
+    actions:
+      new: "Nouveau snippet"
+      edit: "Editer snippet"
+      more: "Voir le snippet"
+    index:
+      title: "Tous les snippets"
+  activerecord:
+    models:
+      snippet: "Snippet"
+    attributes:
+      snippet:
+          description: "Description"
+          name: "Nom du snippet"
+          lang_id: "Language utilisé"
+          snippet_versions: "Dernière version"

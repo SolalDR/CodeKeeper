@@ -1,4 +1,20 @@
 fr:
   hello: "Hello world"
+
   header:
     profil: "Mon profil"
+    snippet: "Mes snippets"
+
+  actions:
+    destroy: "Supprimer"
+    save: "Sauvegarder"
+    new: "Ajouter"
+    edit: "Editer"
+    info: "Plus d'infos"
+    more: "Voir plus"
+    back: "Retour"
+    download: "Télécharger"
+
+  snippet_versions:
+    actions:
+      new: "Nouvelle version"

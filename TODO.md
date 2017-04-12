@@ -9,4 +9,4 @@
 
 # DOING
 - Gestion des utilisateurs
-- Intégrer snippet#show
+- Mettre en place multilingue
