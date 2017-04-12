@@ -263,14 +263,16 @@ SnippetVersion = {
   },
   init:function(){
     this.select = document.getElementById("select_version");
-    this.codeVersions = document.getElementsByClassName("code-version");
-    this.select.selectedIndex = this.codeVersions.length-1; 
-    for(i=0; i<this.codeVersions.length; i++){
-      if(!this.codeVersions[i].className.match("visible")){
-        this.codeVersions[i].classList.add("hidden");
+    if(this.select){
+      this.codeVersions = document.getElementsByClassName("code-version");
+      this.select.selectedIndex = this.codeVersions.length-1;
+      for(i=0; i<this.codeVersions.length; i++){
+        if(!this.codeVersions[i].className.match("visible")){
+          this.codeVersions[i].classList.add("hidden");
+        }
       }
+      this.iniEvents();
     }
-    this.iniEvents();
   }
 }
 
