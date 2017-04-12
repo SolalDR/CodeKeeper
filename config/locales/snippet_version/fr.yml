@@ -1,0 +1,22 @@
+fr:
+  snippet_version:
+    actions:
+      new: "Nouvelle version"
+      edit: "Editer version"
+      more: "Détail version"
+    index:
+      title: "Toutes les versions"
+    type:
+      big: "Importante"
+      medium: "Moyenne"
+      small: "Petite"
+  activerecord:
+    models:
+      snippet_version: "Version"
+    attributes:
+      snippet_version:
+        content: "Code"
+        version: "Version"
+        doc: "Documentation"
+        comment: "Commentaire"
+        type_version: "Niveau d'importance de la mise à jour"

@@ -27,7 +27,7 @@
     <%= f.label :type_version %>
       <% SnippetVersion::VERSION_TYPE.each do |v| %>
       <div class="radio-group">
-        <label for=""><%= v[0] %></label>
+        <label for=""><%= t("snippet_version.type."+v[0]) %></label>
         <input type="radio" name="snippet_version[type_version]" value="<%= v[1] %>" checked>
       </div>
       <% end %>

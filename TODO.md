@@ -6,6 +6,7 @@
 - intégrer snippet#edit
 - créer logo
 - designer + intégrer homepage
+- faire responsive snippet/snippet_version
 
 # DOING
 - Mettre en place multilingue

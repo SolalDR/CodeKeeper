@@ -1,5 +1,5 @@
-<h1><span class="code"><%= @snippet.name %></span> - Nouvelle version</h1>
+<h1>Nouvelle version | <span class="code"><%= @snippet.name %></span></h1>
 
 <%= render 'form', snippet_version: @snippet_version %>
 
-<%= link_to 'Retour', snippet_path(@snippet_version.snippet_id) %>
+<%= link_to 'Retour', snippet_path(@snippet_version.snippet_id), class:"btn btn-dark" %>
