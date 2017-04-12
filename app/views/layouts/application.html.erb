@@ -3,7 +3,7 @@
   <head>
     <title>CodeKeeper</title>
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -29,17 +29,17 @@
             <% end %> -->
             <% if user_signed_in? %>
             <%= link_to(edit_user_registration_path) do %>
-            <li>Mon compte</li>
+            <li><%= t "user.profile" %></li>
             <% end %>
             <%= link_to destroy_user_session_path, method: :delete do %>
-            <li>Se déconnecter</li>
+            <li><%= t "devise.sessions.sign_out" %></li>
             <% end %>
             <% else %>
             <%= link_to(new_user_session_path) do %>
-            <li>Se connecter</li>
+            <li><%= t "devise.sessions.new.sign_in" %></li>
             <% end %>
             <%= link_to(new_user_registration_path) do %>
-            <li>S'inscrire</li>
+            <li><%= t "devise.registrations.new.sign_up" %></li>
             <% end %>
             <% end %>
           </ul>
