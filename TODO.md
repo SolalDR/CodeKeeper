@@ -8,5 +8,5 @@
 - designer + intégrer homepage
 
 # DOING
-- Gestion des utilisateurs
 - Mettre en place multilingue
+- Relation entre user & snippets

@@ -27,8 +27,20 @@
             <!-- <%= link_to(snippets_path) do %>
             <li>Objets</li>
             <% end %> -->
-            <%= link_to(snippets_path) do %>
-            <li><%= t("header.profil") %></li>
+            <% if user_signed_in? %>
+            <%= link_to(edit_user_registration_path) do %>
+            <li>Mon compte</li>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <li>Se déconnecter</li>
+            <% end %>
+            <% else %>
+            <%= link_to(new_user_session_path) do %>
+            <li>Se connecter</li>
+            <% end %>
+            <%= link_to(new_user_registration_path) do %>
+            <li>S'inscrire</li>
+            <% end %>
             <% end %>
           </ul>
         </nav>
