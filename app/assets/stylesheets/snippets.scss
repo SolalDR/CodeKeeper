@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #snippet_show {
+  #notice {
+    margin-bottom: 1em;
+  }
+
   h1 {
     margin-bottom: $medium-pad;
     color: #333;

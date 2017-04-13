@@ -1,4 +1,5 @@
 class SnippetVersionsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
   # GET /snippet_versions
   # GET /snippet_versions.json
@@ -11,13 +12,17 @@ class SnippetVersionsController < ApplicationController
   def show
   end
 
-  
+
 
   # GET /snippet_versions/new
   def new
     @snippet_version = SnippetVersion.new
     if params[:snippet_id] && Snippet.where(id: params[:snippet_id]).length>0
       @snippet = Snippet.find(params[:snippet_id])
+      if @snippet.user != current_user
+        flash[:notice] = "Vous ne pouvez pas créer de versions d'un snippet de quelqu'un d'autre !"
+        redirect_to @snippet
+      end
       @snippet_version.snippet_id = params[:snippet_id]
     else
       flash[:notice] = "Pas de snippet avec l'id : #{params[:snippet_id]}"

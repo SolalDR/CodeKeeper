@@ -14,6 +14,7 @@
 class Snippet < ApplicationRecord
   has_many :snippet_versions
   belongs_to :lang
+  belongs_to :user
   accepts_nested_attributes_for :snippet_versions
 
   def actual

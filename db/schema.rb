@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406133911) do
+ActiveRecord::Schema.define(version: 20170412234415) do
 
   create_table "langs", force: :cascade do |t|
     t.string   "cd",         limit: 3,                        null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170406133911) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "lang_id"
+    t.integer  "user_id"
     t.index ["lang_id"], name: "index_snippets_on_lang_id"
   end
 

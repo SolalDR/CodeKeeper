@@ -18,4 +18,3 @@ __Back :__
 
 # DOING
 - designer/intégrer profil user
-- Relation entre user & snippets

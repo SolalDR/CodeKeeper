@@ -17,3 +17,6 @@ fr:
 
   user:
     profile: Mon compte
+  snippet_versions:
+    actions:
+      new: "Nouvelle version"

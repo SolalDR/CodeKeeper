@@ -1,5 +1,7 @@
 class SnippetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_action :check_snippet_user, only: [:edit, :update, :destroy]
 
   # GET /snippets
   # GET /snippets.json
@@ -25,6 +27,7 @@ class SnippetsController < ApplicationController
   # POST /snippets.json
   def create
     @snippet = Snippet.new snippet_params.except(:snippet_versions_attributes)
+    @snippet.user = current_user
     respond_to do |format|
       if @snippet.save && @snippet.update(snippet_params.slice(:snippet_versions_attributes))
         format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
@@ -70,6 +73,12 @@ class SnippetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
       params.require(:snippet).permit(:description, :lang_id, :abstract, :name, snippet_versions_attributes: [:content, :version, :doc, :comment])
+    end
+
+    def check_snippet_user
+      if @snippet.user != current_user
+        redirect_to @snippet, notice: "Vous n'avez pas la permission de modifier ou supprimer ce snippet."
+      end
     end
 
 end
