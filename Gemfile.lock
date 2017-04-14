@@ -46,6 +46,12 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     choice (0.2.0)
+    ckeditor (4.2.2)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.1.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coffee-rails (4.2.1)
@@ -181,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   byebug
+  ckeditor
   codemirror-rails
   coffee-rails (~> 4.2)
   devise

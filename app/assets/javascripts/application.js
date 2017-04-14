@@ -21,6 +21,7 @@
 //= require codemirror/modes/javascript
 //= require codemirror/modes/htmlmixed
 //= require codemirror/modes/css
+//= require ckeditor/init
 
 // bespin base16-dark hopscotch railscasts
 
