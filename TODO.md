@@ -5,6 +5,7 @@ __Design / Intégration :__
 - designer + intégrer homepage
 - intégrer snippet#edit
 - faire responsive snippet/snippet_version
+- translate snippet / snippet_version
 
 __Javascript :__
 - Fonctionnalité de filtres

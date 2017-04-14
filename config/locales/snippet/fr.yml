@@ -6,6 +6,8 @@ fr:
       more: "Voir le snippet"
     index:
       title: "Tous les snippets"
+    success: "Succès"
+    error: "Erreur"
   activerecord:
     models:
       snippet: "Snippet"
