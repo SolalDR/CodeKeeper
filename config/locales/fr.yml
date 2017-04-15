@@ -20,3 +20,11 @@ fr:
   snippet_versions:
     actions:
       new: "Nouvelle version"
+  datetime:
+    distance_in_words:
+      x_days:
+        one: '1 jour'
+        other: '{{count}} jours'
+      about_x_hours:
+        one: 'environ 1 heure'
+        other: 'environ %{count} heures'
