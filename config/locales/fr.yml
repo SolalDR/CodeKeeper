@@ -28,3 +28,6 @@ fr:
       about_x_hours:
         one: 'environ 1 heure'
         other: 'environ %{count} heures'
+      x_minutes:
+        one: '1 minute'
+        other: '%{count} minutes'

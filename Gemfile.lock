@@ -45,6 +45,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.0.6)
+    cancancan (1.16.0)
     choice (0.2.0)
     ckeditor (4.2.2)
       cocaine
@@ -215,6 +216,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   byebug
+  cancancan (~> 1.10)
   ckeditor
   codemirror-rails
   coffee-rails (~> 4.2)

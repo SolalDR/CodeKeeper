@@ -43,6 +43,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'rails_admin', '~> 1.1.1'
 gem 'rails_admin-i18n'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

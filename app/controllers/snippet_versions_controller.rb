@@ -1,4 +1,6 @@
 class SnippetVersionsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
   # GET /snippet_versions

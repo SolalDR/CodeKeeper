@@ -1,4 +1,6 @@
 class SnippetsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :check_snippet_user, only: [:edit, :update, :destroy]

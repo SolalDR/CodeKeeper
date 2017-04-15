@@ -1,8 +1,22 @@
 class ApplicationController < ActionController::Base
+  include CanCan::ControllerAdditions
+
+
   protect_from_forgery with: :exception
   before_action :get_lang
   before_action :configure_devise_parameters, if: :devise_controller?
   skip_before_action :verify_authenticity_token, only: :search
+
+  rescue_from CanCan::AccessDenied do |exception|
+    # flash[:warning] = exception.message
+    flash[:notice] = exception.message
+    #Rails regarde dans le mauvais fichier de route (celui de rails_admin donc on redirige en absolu)
+    if current_user
+      redirect_to "/"
+    else
+      redirect_to "/users/sign_in"
+    end
+  end
 
   def search
     if params[:text] && params[:text]!=""
