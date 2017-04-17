@@ -1,4 +1,19 @@
-<div class="last-snippets">
+<div id="landing" class="vertical-center">
+  <div>
+    <h1><%= t "title" %></h1>
+    <p class="description"><%= t "description" %></p>
+    <% if !user_signed_in? %>
+    <div class="actions">
+      <%= link_to t("devise.sessions.new.sign_in"), new_user_session_path, class:"btn btn-dark big" %>
+      <%= link_to t("actions.start"), new_user_registration_path, class:"btn btn-colored big" %>
+    </div>
+    <% end %>
+    <!-- <p class="mention"><%= t "actions.more" %></p>
+    <a href="#lastSnippet" class="scroll">Scroll to lastsnippet</a> -->
+  </div>
+</div>
+
+<div class="last-snippets" id="lastSnippet">
   <h2>Derniers snippets</h2>
   <div class="snippets list-drop-down">
     <% @snippets.each do |snippet| %>

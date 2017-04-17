@@ -1,0 +1,60 @@
+#landing {
+  height: calc(100vh - 64px);
+  min-height: 600px;
+  text-align: center;
+  .mention {
+    margin-top: $big-pad;
+    margin-bottom: 10px;
+    font-weight: 200;
+  }
+  .scroll {
+    color: transparent;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid black;
+    background-image: image-url("arrow.svg");
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    filter: invert(0);
+    @include transition(.4s ease-in);
+    &:hover {
+      filter: invert(100%);
+      border-color: white;
+    }
+  }
+  h1 {
+    font-size: 4em;
+    font-weight: 100;
+    font-family: $main-font;
+    text-transform: none;
+    text-align: center;
+    &::after {
+      height: 1px;
+      background-color: black;
+      display: block;
+      width: 50px;
+      margin: auto;
+      position: static;
+      margin-top: $medium-pad;
+    }
+  }
+  .description {
+    font-weight: 200;
+    text-align: center;
+    font-size: 1.3em;
+    margin: $medium-pad;
+    line-height: 1.2em;
+  }
+  .actions {
+    text-align: center;
+    margin-top: $medium-pad;
+    position: relative;
+    .btn {
+      margin: 30px;
+    }
+  }
+}

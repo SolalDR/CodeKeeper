@@ -1,9 +1,13 @@
 body {
-  padding-top: 100px;
+  padding-top: $big-pad;
   font-family: $main-font;
   padding-bottom: $big-pad;
 }
-
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wrapper {
   width: 1080px;
   display: block;
@@ -54,7 +58,7 @@ input[type="checkbox"] + label {
   font-weight: 300;
   border-radius: 0px;
   &.big {
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 10px 15px;
   }
   @include transition(.4s ease-in);
