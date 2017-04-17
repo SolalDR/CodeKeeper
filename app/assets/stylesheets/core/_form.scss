@@ -18,6 +18,10 @@ label {
 
 .form-devise {
   margin-bottom: 96px;
-  margin-top: $small-pad; 
+  margin-top: $small-pad;
   width: 100%;
+}
+
+.navbar-form {
+  border-color: transparent !important;
 }

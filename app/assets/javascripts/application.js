@@ -22,6 +22,7 @@
 //= require codemirror/modes/htmlmixed
 //= require codemirror/modes/css
 //= require ckeditor/init
+//= require bootstrap
 
 // bespin base16-dark hopscotch railscasts
 
@@ -285,3 +286,23 @@ window.addEventListener("turbolinks:load", function(){
   SnippetVersion.init();
   initSideBar();
 }, false)
+
+var item = document.querySelectorAll('.carousel-item');
+var popup = document.querySelectorAll('.popup');
+var close = document.querySelectorAll('.close');
+
+
+for (var i = 0; i < item.length; i++){
+  (function(){
+    var r = i;
+    item[r].addEventListener("click", function(){
+      for(j=0; j<popup.length; j++){
+        popup[j].style.display = "none";
+      }
+      popup[r].style.display = 'block';
+    }, false);
+    close[r].addEventListener('click',function(){
+      popup[r].style.display="none";
+    });
+  })();
+}

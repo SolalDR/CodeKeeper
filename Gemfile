@@ -48,6 +48,8 @@ gem 'rails_admin', '~> 1.1.1'
 gem 'rails_admin-i18n'
 gem 'cancancan', '~> 1.10'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

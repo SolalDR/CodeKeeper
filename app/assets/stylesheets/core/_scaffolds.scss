@@ -3,15 +3,26 @@ body {
   font-family: $main-font;
   padding-bottom: $big-pad;
 }
+
 .vertical-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .full-height {
   height: 100vh;
-  min-height: 600px; 
+  min-height: 600px;
 }
+
+.margin-top-big {
+  margin-top: $big-pad;
+}
+
+.margin-top-medium {
+  margin-top: $medium-pad;
+}
+
 
 .wrapper {
   width: 1080px;
