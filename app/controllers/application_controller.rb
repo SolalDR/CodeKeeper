@@ -48,7 +48,8 @@ class ApplicationController < ActionController::Base
   def default_meta_tags
     set_meta_tags site: 'Code Keeper',
                   description: t("meta_description"),
-                  keywords: 'Code Keeper, version, sauvegarde, github'
+                  keywords: 'Code Keeper, version, sauvegarde, github',
+                  viewport: "width=device-width, user-scalable=no"
   end
 
   private
