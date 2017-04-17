@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.last-snippets {
+  padding-top: $medium-pad;
+}
 #snippet_show {
+  padding-top: $medium-pad;
   #notice {
     margin-bottom: 1em;
   }
