@@ -3,6 +3,7 @@ class SnippetsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
   before_action :check_snippet_user, only: [:edit, :update, :destroy]
 
   # GET /snippets
@@ -75,6 +76,11 @@ class SnippetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
       params.require(:snippet).permit(:description, :lang_id, :abstract, :name, snippet_versions_attributes: [:content, :version, :doc, :comment])
+    end
+
+    def set_meta_tags_page
+      set_meta_tags title: @snippet.name,
+                    description: @snippet.description
     end
 
     def check_snippet_user

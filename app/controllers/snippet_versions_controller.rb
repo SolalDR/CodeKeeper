@@ -1,8 +1,8 @@
 class SnippetVersionsController < ApplicationController
   load_and_authorize_resource
-
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
+  before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
   # GET /snippet_versions
   # GET /snippet_versions.json
   def index
@@ -88,6 +88,11 @@ class SnippetVersionsController < ApplicationController
     def set_snippet_version
       @snippet_version = SnippetVersion.find(params[:id])
       @snippet = Snippet.find(@snippet_version.snippet_id)
+    end
+
+    def set_meta_tags_page
+      set_meta_tags title: @snippet.name + @snippet_version.version,
+                    description: @snippet.description
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -19,6 +19,8 @@ fr:
               blank: Le prénom ne doit pas être vide
             lastname:
               blank: Le nom de famille ne doit pas être vide
+            current_password:
+              invalid: Mot de passe erroné
   devise:
     confirmations:
       confirmed: Votre compte a été confirmé avec succès.
