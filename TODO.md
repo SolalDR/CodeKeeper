@@ -1,13 +1,13 @@
 # TODO
 
 __Design / Intégration :__
-- créer logo
 - designer + intégrer homepage
 - intégrer snippet#edit
 - faire responsive snippet/snippet_version
-- translate snippet / snippet_version
+- translate snippet
 - intégrer un fil d'ariane sur toute les pages
 - intégrer page de profil
+- designer/intégrer profil user
 
 __Javascript :__
 - Fonctionnalité de filtres
@@ -16,8 +16,9 @@ __Javascript :__
 
 __Back :__
 - Créer modèle Object
-- ajouter champs type au snippet : function | prototype | method | object
+- gérer autorisation snippet / snippet_versions
 
 
 # DOING
-- designer/intégrer profil user
+- ajouter champs type au snippet : function | prototype | method | object
+- créer logo
