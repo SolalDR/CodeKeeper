@@ -23,13 +23,18 @@ class SnippetVersion < ApplicationRecord
       current_version = last.version.split(".").map{ |v| v.to_i }
       if (0..2).include? version
         current_version[version]+= 1
+        resetVersion = version+1
+        while resetVersion < 3
+          current_version[resetVersion] = 0;
+          resetVersion+=1
+        end
         self.version = current_version.join(".")
       end
     else
       self.version = "1.0.0"
     end
   end
-  
+
   def type_version
   end
 
