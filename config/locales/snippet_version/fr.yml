@@ -1,5 +1,7 @@
 fr:
   snippet_version:
+    comment:
+      placeholder: Pourquoi faire cette mise à jour ?
     actions:
       new: "Nouvelle version"
       edit: "Editer version"
@@ -15,7 +17,7 @@ fr:
       snippet_version: "Version"
     attributes:
       snippet_version:
-        content: "Code"
+        content: Contenu du snippet (par défaut le code de la version précédente)
         version: "Version"
         doc: "Documentation"
         comment: "Commentaire"

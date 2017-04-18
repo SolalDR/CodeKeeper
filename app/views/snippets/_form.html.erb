@@ -27,6 +27,7 @@
     <%= select_tag "snippet[lang_id]", options_for_select(langs_array) %>
   </div>
 
+  <% if action_name != "edit" %>
   <% snip = SnippetVersion.new %>
   <%= f.label :snippet_versions %>
   <%= f.fields_for :snippet_versions, snip do |ff| %>
@@ -43,8 +44,8 @@
       <%= ff.label :comment %>
       <%= ff.text_field :comment, class:"form-control" %>
     </div>
-
-  <% end %>
+  <% end %><!-- fields for -->
+  <% end %><!-- action name -->
 
   <div class="actions">
     <%= f.submit t("actions.save") , class:"btn btn-colored" %>

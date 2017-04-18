@@ -25,6 +25,16 @@
     height: $medium-pad;
     border: 0;
   }
+  .header-show {
+    #snippet-version-edit {
+      background-color: #F1E05A;
+      color: black;
+      float: left;
+      padding: 8px;
+      font-weight: 100;
+      margin-left: 5px;
+    }
+  }
   #select_version {
     height: $medium-pad;
     width: 100px;
@@ -78,4 +88,8 @@
     margin-top: $medium-pad;
     clear: both;
   }
+}
+
+.snippet-form {
+  margin-top: $medium-pad;
 }

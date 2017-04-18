@@ -12,11 +12,12 @@
       <% end %>
       <% end %>
     </select>
+    <%= link_to t("snippet_version.actions.edit"), edit_snippet_version_path(@snippet.snippet_versions.first), id:"snippet-version-edit", style: "background-color: #{@snippet.lang.bgColor}; color: #{@snippet.lang.color}" %>
   </div>
   <div class="body-show">
     <div id="code">
     <% @snippet.snippet_versions.each_with_index do |v, i| %>
-      <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>">
+      <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>" data-id="<%= v.id %>">
         <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
       </div>
     <% end %>
@@ -26,8 +27,8 @@
       <p class="description"><%= @snippet.description %></p>
       <strong><%= t 'activerecord.attributes.snippet.author' %></strong>
       <p class="description"><%= @snippet.user.fullname %></p>
-      <%= link_to t("actions.edit"), edit_snippet_path(@snippet), class:"btn btn-dark" %>
-      <%= link_to t("actions.download"), edit_snippet_path(@snippet), class:"btn btn-dark" %>
+      <%= link_to t("snippet.actions.parameters"), edit_snippet_path(@snippet), class:"btn btn-dark" %>
+      <!-- <%= link_to t("actions.download"), edit_snippet_path(@snippet), class:"btn btn-dark" %> -->
       <%= link_to t("snippet_versions.actions.new"), new_snippet_snippet_version_path(@snippet), class:"btn btn-dark" %>
     </div>
   </div>

@@ -7,6 +7,12 @@ label {
   display: block;
 }
 
+form {
+  .mention {
+    font-size: .9em;
+    font-weight: 200;
+  }
+}
 .radio-group {
   display: inline-block;
   margin: 5px;

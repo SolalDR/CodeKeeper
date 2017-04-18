@@ -4,6 +4,8 @@ fr:
       new: "Nouveau snippet"
       edit: "Editer snippet"
       more: "Voir le snippet"
+      back: "Retour au snippet"
+      parameters: "Paramètres du snippet"
     index:
       title: "Tous les snippets"
     success: "Succès"

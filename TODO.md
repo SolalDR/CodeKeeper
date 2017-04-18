@@ -6,6 +6,8 @@ __Design / Intégration :__
 - intégrer snippet#edit
 - faire responsive snippet/snippet_version
 - translate snippet / snippet_version
+- intégrer un fil d'ariane sur toute les pages
+- intégrer page de profil
 
 __Javascript :__
 - Fonctionnalité de filtres

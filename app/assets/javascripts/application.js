@@ -248,11 +248,15 @@ DropDown = {
 
 
 SnippetVersion = {
+  patternEdit: /^(.+?\/)\d+(\/.+)$/,
   display:function(rank){
     for(i=0; i<this.codeVersions.length; i++){
       this.codeVersions[i].classList.remove("visible");
       this.codeVersions[i].classList.add("hidden");
     }
+    var nextHref = this.editButton.href.replace(this.patternEdit, "$1"+this.codeVersions[rank].getAttribute("data-id")+"$2");
+    this.editButton.href = nextHref
+
     this.codeVersions[rank].classList.remove("hidden");
     this.codeVersions[rank].classList.add("visible");
   },
@@ -267,6 +271,7 @@ SnippetVersion = {
     this.select = document.getElementById("select_version");
     if(this.select){
       this.codeVersions = document.getElementsByClassName("code-version");
+      this.editButton = document.getElementById("snippet-version-edit");
       this.select.selectedIndex = this.codeVersions.length-1;
       for(i=0; i<this.codeVersions.length; i++){
         if(!this.codeVersions[i].className.match("visible")){

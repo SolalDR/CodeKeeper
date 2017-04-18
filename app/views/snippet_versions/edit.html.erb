@@ -1,6 +1,8 @@
-<h1>Editing Snippet Version</h1>
-
-<%= render 'form', snippet_version: @snippet_version %>
-
-<%= link_to 'Show', @snippet_version %> |
-<%= link_to 'Retour', snippet_path(@snippet_version.snippet_id) %>
+<div class="row margin-top-medium snippet-version-form">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h1>Editing Snippet Version</h1>
+    <%= render 'form', snippet_version: @snippet_version %>
+    <%= link_to 'Show', @snippet_version, class:"btn btn-dark right" %> 
+    <%= link_to 'Retour', snippet_path(@snippet_version.snippet_id), class:"btn btn-dark right" %>
+  </div>
+</div>
