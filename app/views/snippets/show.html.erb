@@ -12,7 +12,9 @@
       <% end %>
       <% end %>
     </select>
-    <%= link_to t("snippet_version.actions.edit"), edit_snippet_version_path(@snippet.snippet_versions.first), id:"snippet-version-edit", style: "background-color: #{@snippet.lang.bgColor}; color: #{@snippet.lang.color}" %>
+    <% if current_user && @snippet.user == current_user %>
+      <%= link_to t("snippet_version.actions.edit"), edit_snippet_version_path(@snippet.snippet_versions.first), id:"snippet-version-edit", style: "background-color: #{@snippet.lang.bgColor}; color: #{@snippet.lang.color}" %>
+    <% end %>
   </div>
   <div class="body-show">
     <div id="code">
@@ -27,17 +29,19 @@
       <p class="description"><%= @snippet.description %></p>
       <strong><%= t 'activerecord.attributes.snippet.author' %></strong>
       <p class="description"><%= @snippet.user.fullname %></p>
-      <%= link_to t("snippet.actions.parameters"), edit_snippet_path(@snippet), class:"btn btn-dark" %>
-      <!-- <%= link_to t("actions.download"), edit_snippet_path(@snippet), class:"btn btn-dark" %> -->
-      <%= link_to t("snippet_versions.actions.new"), new_snippet_snippet_version_path(@snippet), class:"btn btn-dark" %>
+      <% if current_user && @snippet.user == current_user %>
+        <%= link_to t("snippet.actions.parameters"), edit_snippet_path(@snippet), class:"btn btn-dark" %>
+        <!-- <%= link_to t("actions.download"), edit_snippet_path(@snippet), class:"btn btn-dark" %> -->
+        <%= link_to t("snippet_versions.actions.new"), new_snippet_snippet_version_path(@snippet), class:"btn btn-dark" %>
+      <% end %>
     </div>
   </div>
 
-  <!-- <div class="version">
-    <% @snippet.snippet_versions.each do |version| %>
-      <p><%= link_to "Version : "+version.version, version %> - <%= link_to "Destroy", version, method: :delete, data: { confirm: "Are you sure?" } %></p>
-    <% end %>
-  </div>
-  <%= link_to 'Back', snippets_path %> -->
-
+  <% if current_user && @snippet.user == current_user %>
+    <div class="version">
+      <% @snippet.snippet_versions.each do |version| %>
+        <p><%= link_to "Version : "+version.version, version %> - <%= link_to "Destroy", version, method: :delete, data: { confirm: "Are you sure?" } %></p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
