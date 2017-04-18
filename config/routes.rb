@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :snippets do
     resources :snippet_versions, only: [:new]
   end
-  resources :snippet_versions, except: [:new]
+  resources :snippet_versions, except: [:new, :index]
 
   post "search", to: "application#search", as: :search
 

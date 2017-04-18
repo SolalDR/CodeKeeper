@@ -1,20 +1,14 @@
 class SnippetVersionsController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
   before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
-  # GET /snippet_versions
-  # GET /snippet_versions.json
-  def index
-    @snippet_versions = SnippetVersion.all
-  end
+
 
   # GET /snippet_versions/1
   # GET /snippet_versions/1.json
   def show
   end
-
-
 
   # GET /snippet_versions/new
   def new

@@ -254,9 +254,10 @@ SnippetVersion = {
       this.codeVersions[i].classList.remove("visible");
       this.codeVersions[i].classList.add("hidden");
     }
-    var nextHref = this.editButton.href.replace(this.patternEdit, "$1"+this.codeVersions[rank].getAttribute("data-id")+"$2");
-    this.editButton.href = nextHref
-
+    if(this.editButton){
+      var nextHref = this.editButton.href.replace(this.patternEdit, "$1"+this.codeVersions[rank].getAttribute("data-id")+"$2");
+      this.editButton.href = nextHref
+    }
     this.codeVersions[rank].classList.remove("hidden");
     this.codeVersions[rank].classList.add("visible");
   },
