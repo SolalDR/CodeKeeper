@@ -16,12 +16,12 @@ class SnippetVersionsController < ApplicationController
     if params[:snippet_id] && Snippet.where(id: params[:snippet_id]).length>0
       @snippet = Snippet.find(params[:snippet_id])
       if @snippet.user != current_user
-        flash[:notice] = "Vous ne pouvez pas créer de versions d'un snippet de quelqu'un d'autre !"
+        flash[:notice] = I18n.t("snippet_version.error.owner")
         redirect_to @snippet
       end
       @snippet_version.snippet_id = params[:snippet_id]
     else
-      flash[:notice] = "Pas de snippet avec l'id : #{params[:snippet_id]}"
+      flash[:notice] = I18n.t("snippet_version.error.no_snippet_id")
       redirect_to root_path
     end
   end
@@ -38,12 +38,12 @@ class SnippetVersionsController < ApplicationController
     puts @last_version.content
     @snippet_version = SnippetVersion.new(snippet_version_params)
     if @last_version.content == snippet_version_params[:content]
-      redirect_to @snippet, notice: "This version content is the same as before."
+      redirect_to @snippet, notice: I18n.t("snippet_version.error.same_content")
       return nil
     end
     respond_to do |format|
       if @snippet_version.save
-        format.html { redirect_to @snippet_version.snippet, notice: 'Snippet version was successfully created.' }
+        format.html { redirect_to @snippet_version.snippet, notice: I18n.t("snippet_version.success.create") }
         format.json { render :show, status: :created, location: @snippet_version }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class SnippetVersionsController < ApplicationController
   def update
     respond_to do |format|
       if @snippet_version.update(snippet_version_params)
-        format.html { redirect_to @snippet_version.snippet, notice: 'Snippet version was successfully updated.' }
+        format.html { redirect_to @snippet_version.snippet, notice: I18n.t("snippet_version.success.update") }
         format.json { render :show, status: :ok, location: @snippet_version }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class SnippetVersionsController < ApplicationController
     puts "*"*100
     @snippet_version.destroy
     respond_to do |format|
-      format.html { redirect_to snippet_versions_url, notice: 'Snippet version was successfully destroyed.' }
+      format.html { redirect_to snippet_versions_url, notice: I18n.t("snippet_version.success.destroy") }
       format.json { head :no_content }
     end
   end

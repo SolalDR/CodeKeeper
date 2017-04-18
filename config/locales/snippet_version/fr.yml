@@ -3,22 +3,30 @@ fr:
     comment:
       placeholder: Pourquoi faire cette mise à jour ?
     actions:
-      new: "Nouvelle version"
-      edit: "Editer version"
-      more: "Détail version"
+      new: Nouvelle version
+      edit: Editer version
+      more: Détail version
     index:
-      title: "Toutes les versions"
+      title: Toutes les versions
     type:
-      big: "Importante"
-      medium: "Moyenne"
-      small: "Petite"
+      big: Importante
+      medium: Moyenne
+      small: Petite
+    success:
+      create: La nouvelle version a été crée avec succés.
+      update: La version a été mise a jour avec succés.
+      destroy: La version a été supprimée avec succés.
+    error:
+      owner: Vous ne pouvez pas créer de versions d'un snippet de quelqu'un d'autre !
+      no_snippet_id: Le snippet choisi n'existe pas
+      same_content: La nouvelle version ne peut pas avoir le même contenu que la précédente.
   activerecord:
     models:
-      snippet_version: "Version"
+      snippet_version: Version
     attributes:
       snippet_version:
         content: Contenu du snippet (par défaut le code de la version précédente)
-        version: "Version"
-        doc: "Documentation"
-        comment: "Commentaire"
-        type_version: "Niveau d'importance de la mise à jour"
+        version: Version
+        doc: Documentation
+        comment: Commentaire
+        type_version: Niveau d'importance de la mise à jour
