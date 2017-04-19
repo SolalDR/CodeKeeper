@@ -21,4 +21,3 @@ __Back :__
 
 # DOING
 - ajouter champs type au snippet : function | prototype | method | object
-- créer logo

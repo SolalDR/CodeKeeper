@@ -1,13 +1,22 @@
 header  {
   background-color: #222;
   color: white;
-  padding: 16px;
+  padding: 0 $medium-pad;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 10;
   box-shadow: 0px 0px 20px rgba(0,0,0,.5);
+  .navbar-brand {
+    padding-right: 0;
+    img {
+      display: block;
+      width: 35px;
+      filter: invert(1);
+      @include transform(translateY(-8px));
+    }
+  }
   .search {
     display: inline-block;
     input {
@@ -100,7 +109,6 @@ header  {
   color: #DDD;
 }
 header {
-  padding:0;
   .navbar {
     width: 100%;
     margin-bottom: 0;

@@ -19,7 +19,7 @@
 }
 
 .margin-bottom-small {
-  margin-bottom: $small-pad;
+  margin-bottom: $small-pad !importants;
 }
 .margin-bottom-medium {
   margin-bottom: $medium-pad;
