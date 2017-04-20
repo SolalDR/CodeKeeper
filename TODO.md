@@ -16,7 +16,6 @@ __Javascript :__
 
 __Back :__
 - Créer modèle Object
-- gérer autorisation snippet / snippet_versions
 
 
 # DOING

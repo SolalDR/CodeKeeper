@@ -3,6 +3,7 @@ class SnippetVersionsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
   before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
+  before_action :check_snippet_version_user, only: [:edit, :update, :destroy, :new]
 
 
   # GET /snippet_versions/1
@@ -87,6 +88,12 @@ class SnippetVersionsController < ApplicationController
     def set_meta_tags_page
       set_meta_tags title: @snippet.name + @snippet_version.version,
                     description: @snippet.description
+    end
+
+    def check_snippet_version_user
+      if @snippet && @snippet.user != current_user
+        redirect_to @snippet, notice: "Vous n'avez pas la permission de modifier ou supprimer cet version de snippet."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
