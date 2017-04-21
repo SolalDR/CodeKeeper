@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
   resources :snippet_versions, except: [:new, :index]
 
+  get "profile", to: "profile#show", as: :profile
+  get "profile/edit", to: "profile#edit", as: :edit_profile
+
   post "search", to: "application#search", as: :search
 
   # get '/snippets/:id/new-v', to: 'snippet_versions#new', as: :new_version_from_snippet

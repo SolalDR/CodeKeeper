@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "Snippets", snippets_path %></li>
                     <% if user_signed_in? %>
-                    <li><%= link_to t("user.profile"), edit_user_registration_path %></li>
+                    <li><%= link_to t("user.profile"), profile_path %></li>
                     <li><%= link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete %></li>
                     <% else %>
                     <li><%= link_to t("devise.sessions.new.sign_in"), new_user_session_path %></li>
