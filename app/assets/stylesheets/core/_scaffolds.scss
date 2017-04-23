@@ -4,6 +4,10 @@ body {
   padding-bottom: $big-pad;
 }
 
+#turbolinks-progress-bar {
+  background-color: $color-3;
+}
+
 .vertical-center {
   display: flex;
   align-items: center;

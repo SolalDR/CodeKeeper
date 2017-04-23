@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  content    :text             not null
-#  version    :string           not null
+#  version    :string           default("1.0.0"), not null
 #  doc        :string
 #  comment    :string
 #  created_at :datetime         not null

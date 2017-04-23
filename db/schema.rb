@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170414203200) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -22,17 +25,17 @@ ActiveRecord::Schema.define(version: 20170414203200) do
     t.integer  "height"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
+    t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
   end
 
   create_table "langs", force: :cascade do |t|
-    t.string   "cd",         limit: 3,                        null: false
-    t.string   "cdMirror",             default: "javascript"
-    t.string   "lib",                                         null: false
-    t.string   "bgColor",                                     null: false
-    t.string   "color",                default: "#FFFFFF",    null: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.text     "cd",                                null: false
+    t.string   "cdMirror",   default: "javascript"
+    t.string   "lib",                               null: false
+    t.string   "bgColor",                           null: false
+    t.string   "color",      default: "#FFFFFF",    null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "snippet_versions", force: :cascade do |t|
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170414203200) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "snippet_id"
-    t.index ["snippet_id"], name: "index_snippet_versions_on_snippet_id"
+    t.index ["snippet_id"], name: "index_snippet_versions_on_snippet_id", using: :btree
   end
 
   create_table "snippets", force: :cascade do |t|
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170414203200) do
     t.datetime "updated_at",                  null: false
     t.integer  "lang_id"
     t.integer  "user_id"
-    t.index ["lang_id"], name: "index_snippets_on_lang_id"
+    t.index ["lang_id"], name: "index_snippets_on_lang_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,8 +76,10 @@ ActiveRecord::Schema.define(version: 20170414203200) do
     t.boolean  "admin",                  default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "snippet_versions", "snippets"
+  add_foreign_key "snippets", "langs"
 end

@@ -4,11 +4,12 @@
 #
 #  id          :integer          not null, primary key
 #  description :string
-#  lang        :string           not null
-#  abstract    :boolean          default("f")
+#  abstract    :boolean          default("false")
 #  name        :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  lang_id     :integer
+#  user_id     :integer
 #
 
 class Snippet < ApplicationRecord
