@@ -38,6 +38,7 @@
           <%= render "devise/shared/links" %>
           <%= f.submit t("devise.registrations.new.sign_up"), class:"btn btn-colored" %>
         </div>
+        <%= link_to "Sign in with github", user_github_omniauth_authorize_path %>
       <% end %>
     </div>
   </div>

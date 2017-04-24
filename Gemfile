@@ -44,6 +44,7 @@ gem 'ckeditor'
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'omniauth-github'
 gem 'rails_admin', '~> 1.1.1'
 gem 'rails_admin-i18n'
 gem 'cancancan', '~> 1.10'

@@ -16,7 +16,7 @@ __Javascript :__
 
 __Back :__
 - Créer modèle Object
+- ajouter champs type au snippet : function | prototype | method | object
 
 
 # DOING
-- ajouter champs type au snippet : function | prototype | method | object
