@@ -7,6 +7,7 @@
 }
 #snippet_show {
   padding-top: $medium-pad;
+  position: relative;
   #notice {
     margin-bottom: 1em;
   }
@@ -14,6 +15,22 @@
   h1 {
     margin-bottom: $medium-pad;
     color: #333;
+  }
+
+  .private {
+    float: right;
+    color: green;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 5px 10px;
+    border: 2px solid green;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    &[data-private="true"]{
+      color: red;
+      border: 2px solid red;
+    }
   }
 
   .info {

@@ -9,7 +9,7 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.json
   def index
-    @snippets = Snippet.all
+    @snippets = Snippet.where(private: false)
   end
 
   # GET /snippets/1
@@ -75,7 +75,7 @@ class SnippetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
-      params.require(:snippet).permit(:description, :lang_id, :abstract, :name, snippet_versions_attributes: [:content, :version, :doc, :comment])
+      params.require(:snippet).permit(:description, :lang_id, :abstract, :name, :private, snippet_versions_attributes: [:content, :version, :doc, :comment])
     end
 
     def set_meta_tags_page

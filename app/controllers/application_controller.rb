@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def search
     if params[:text] && params[:text]!=""
       name = params[:text]
-      @snippets = Snippet.where("LOWER(name) LIKE ?", "%#{name.downcase}%")
+      @snippets = Snippet.where("LOWER(name) LIKE ? AND private=false", "%#{name.downcase}%")
     end
     if !@snippets || params[:text]==""
       render json: false
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def home
-    @snippets = Snippet.all
+    @snippets = Snippet.where(private: false).last(6)
   end
 
   def configure_devise_parameters

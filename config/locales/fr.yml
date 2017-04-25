@@ -2,7 +2,9 @@ fr:
   title: Code Keeper
   description: Code keeper est une application web vous permettant de sauvegarder votre code en ligne. Créez vos propres snippets, versionnez les, partagez les et cessez enfin de parcourir tous vos projets pour trouver le petit bout de code qui vous manque pour avancer.
   meta_description: Code keeper est une application web vous permettant de sauvegarder votre code en ligne. Créez vos propres snippets, versionnez les et partagez les.
-
+  scope:
+    public: Publique
+    private: Privé
   hello: Hello world
 
   header:

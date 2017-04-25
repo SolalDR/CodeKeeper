@@ -1,5 +1,6 @@
 <div id="snippet_show">
   <h1><%= t("activerecord.models.snippet")%> | <span class="code"><%= @snippet.name %></span></h1>
+  <p class="private" data-private="<%= @snippet.private %>"><%= t("scope.#{privateLib(@snippet.private)}") %></p>
   <div class="header-show">
     <p id="notice"><%= notice %></p>
     <p class="info uppercase left" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>

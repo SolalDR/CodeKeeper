@@ -10,6 +10,7 @@
 #  updated_at  :datetime         not null
 #  lang_id     :integer
 #  user_id     :integer
+#  private     :boolean          default("false")
 #
 
 class Snippet < ApplicationRecord
