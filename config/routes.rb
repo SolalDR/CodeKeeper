@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } do
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
   root "application#home"
   resources :snippets do
     resources :snippet_versions, only: [:new]
