@@ -16,8 +16,18 @@
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
 #  admin                  :boolean          default("false")
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  provider               :string
+#  uid                    :string
+#  description            :text
+#  nickname               :string
+#  url_site               :string
+#  url_github             :string
 #
 
 class User < ApplicationRecord
@@ -38,6 +48,14 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+
+      user.nickname = auth.info.nickname
+      user.url_site = auth.info.urls[:Blog]
+      user.url_github = auth.info.urls[:GitHub]
+
+      # puts auth.info.image
+      # puts auth.info.name
+
     end
   end
 
