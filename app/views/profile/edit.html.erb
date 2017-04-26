@@ -1,0 +1,38 @@
+<div class="full-height">
+  <div class="row form-devise">
+    <div class="form col-sm-6 col-sm-offset-3">
+      <h2><%= t "actions.edit" %> <%= @user.fullname %></h2>
+      <%= form_for @user, url: {action: "update"} do |f| %>
+        <div class="form-group">
+          <%= f.label :firstname %>
+          <%= f.text_field :firstname, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :lastname %>
+          <%= f.text_field :lastname, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :url_site %>
+          <%= f.text_field :url_site, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :url_github %>
+          <%= f.text_field :url_github, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, class:"form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= link_to t("actions.back"), :back, class:"btn btn-dark" %>
+          <%= f.submit t("devise.registrations.edit.update"), class:"btn btn-colored" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

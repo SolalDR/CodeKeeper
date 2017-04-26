@@ -5,6 +5,9 @@ fr:
         current_password: Mot de passe actuel
         email: E-mail
         password: Mot de passe
+        nickname: "Pseudo"
+        url_github: "Url de votre compte github"
+        url_site: "Votre site"
         password_confirmation: Confirmation du mot de passe
         remember_me: Se souvenir de moi
         reset_password_token: Clé de Réinitialisation du Mot de Passe
@@ -21,6 +24,7 @@ fr:
               blank: Le nom de famille ne doit pas être vide
             current_password:
               invalid: Mot de passe erroné
+              blank: Mot de passe non rempli
   devise:
     confirmations:
       confirmed: Votre compte a été confirmé avec succès.

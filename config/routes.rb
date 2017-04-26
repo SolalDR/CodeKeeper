@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   resources :snippet_versions, except: [:new, :index]
 
+  patch "profile/udpate", to: "profile#update", as: :profile_update
+
   get "profile", to: "profile#show", as: :profile
   get "profile/edit", to: "profile#edit", as: :edit_profile
 
