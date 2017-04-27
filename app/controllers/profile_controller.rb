@@ -42,6 +42,6 @@ class ProfileController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:description, :url_site, :url_github, :lastname, :firstname)
+      params.require(:user).permit(:description, :url_site, :url_github, :lastname, :firstname, :nickname)
     end
 end

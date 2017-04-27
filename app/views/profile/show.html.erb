@@ -1,47 +1,130 @@
-<div class="head margin-top-medium">
-  <img src="" alt="">
-  <div class="head-content">
-    <h1><%= current_user.firstname %> <%= current_user.lastname %></h1>
-    <p><%= current_user.description %></p>
-    <div class="links">
-      <%= display_if_exist(current_user.url_site); %>
-      <%= display_if_exist(current_user.url_github); %>
-    </div>
-  </div>
-
-</div>
-
-<% if current_user %>
-  <%= link_to t("actions.edit_account"), edit_user_registration_path, class:"btn btn-colored" %>
-  <%= link_to t("actions.edit_profile"), edit_profile_path, class:"btn btn-colored" %>
-<% end %>
-<div class="snippets list-drop-down">
-  <% current_user.snippets.each do |snippet| %>
-  <div class="snippet drop-down-item drop-hidden">
-    <!-- <button class="drop-deploy-button">+</button> -->
-    <div class="drop-header">
-      <span class="info snippet-type">func</span>
-      <span class="info snippet-lang uppercase" style="background-color: <%= snippet.lang.bgColor %>; color: <%= snippet.lang.color %>"><%= snippet.lang.cd %></span>
-      <p class="drop-header-title"><%= snippet.name %></p>
-      <div class="drop-header-right">
-        <!-- <button class="info copy"></button> -->
-        <span class="date"><%= snippet.updated_at.strftime("%d/%m/%Y") %></span>
-      </div>
-    </div>
-    <div class="drop-body">
-      <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
-      <div class="content">
-        <p class="description"><%= snippet.description %></p>
-        <%= link_to t("actions.more"), snippet, class:"btn btn-dark" %>
-        <% if current_user && snippet.user == current_user %>
-          <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
-          <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
+<div class="profile-show container margin-top-medium">
+    <div class="head-content">
+      <div class="left">
+        <% if @user.nickname %>
+          <h1><%= @user.nickname %></h1>
+          <h2><%= @user.fullname %> </h2>
+        <% else  %>
+          <h1><%= @user.fullname %></h1>
         <% end %>
-        <!-- <p>Utiliser dans 4 objets</p> -->
-        <p class="description"><%= snippet.user.fullname %></p>
+      </div>
+      <div class="links right">
+        <% if @user.url_site %>
+          <a href="<%= @user.url_site %>" class="rs-link website"><span><%= @user.url_site %></span></a>
+        <% end %>
+        <% if @user.email %>
+          <a href="mailto:<%= @user.email %>" class="rs-link email"><span><%= @user.email %></span></a>
+        <% end %>
+        <% if @user.url_github %>
+          <a href="<%= @user.url_github %>" class="rs-link github"><span><%= @user.url_github %></span></a>
+        <% end %>
       </div>
     </div>
+    <div id="tabs" class="body-content">
+      <div class="head-select">
+        <ul>
+          <span id="bar"></span>
+          <li class="item-head-select"><a href="#overview-item">Overview</a></li>
+          <li class="item-head-select"><a href="#bio-item">Biographie</a></li>
+          <li class="item-head-select"><a href="#snippet-item">Snippets</a></li>
+          <li class="item-head-select"><a href="#object-item">Objets</a></li>
+          <li class="item-head-select"><a href="#like-item">Likes</a></li>
+          <li class="item-head-select"><a href="#setting-item">Réglages</a></li>
+        </ul>
+      </div>
+      <div class="body-select">
+
+        <div id="overview-item" class="item-body-select">
+          <div class="snippets list-drop-down">
+            <% @user.snippets.each_with_index do |snippet, i| %>
+            <div class="snippet drop-down-item drop-hidden">
+              <!-- <button class="drop-deploy-button">+</button> -->
+              <div class="drop-header">
+                <span class="info snippet-type">func</span>
+                <span class="info snippet-lang uppercase" style="background-color: <%= snippet.lang.bgColor %>; color: <%= snippet.lang.color %>"><%= snippet.lang.cd %></span>
+                <p class="drop-header-title"><%= snippet.name %></p>
+                <div class="drop-header-right">
+                  <!-- <button class="info copy"></button> -->
+                  <span class="date"><%= snippet.updated_at.strftime("%d/%m/%Y") %></span>
+                </div>
+              </div>
+              <div class="drop-body">
+                <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
+                <div class="content">
+                  <p class="description"><%= snippet.description %></p>
+                  <%= link_to t("actions.more"), snippet, class:"btn btn-dark" %>
+                  <% if current_user && snippet.user == current_user %>
+                    <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
+                    <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
+                  <% end %>
+                  <!-- <p>Utiliser dans 4 objets</p> -->
+                  <p class="description"><%= snippet.user.fullname %></p>
+                </div>
+              </div>
+            </div>
+
+            <% end %>
+          </div>
+        </div>
+
+
+        <div id="bio-item" class="item-body-select">
+          <%= @user.description %>
+        </div>
+
+        <div id="snippet-item" class="item-body-select">
+            <h2>Snippets</h2>
+            <div class="snippets list-drop-down">
+              <% @user.snippets.each do |snippet| %>
+              <div class="snippet drop-down-item drop-hidden">
+                <!-- <button class="drop-deploy-button">+</button> -->
+                <div class="drop-header">
+                  <span class="info snippet-type">func</span>
+                  <span class="info snippet-lang uppercase" style="background-color: <%= snippet.lang.bgColor %>; color: <%= snippet.lang.color %>"><%= snippet.lang.cd %></span>
+                  <p class="drop-header-title"><%= snippet.name %></p>
+                  <div class="drop-header-right">
+                    <!-- <button class="info copy"></button> -->
+                    <span class="date"><%= snippet.updated_at.strftime("%d/%m/%Y") %></span>
+                  </div>
+                </div>
+                <div class="drop-body">
+                  <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
+                  <div class="content">
+                    <p class="description"><%= snippet.description %></p>
+                    <%= link_to t("actions.more"), snippet, class:"btn btn-dark" %>
+                    <% if current_user && snippet.user == current_user %>
+                      <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
+                      <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
+                    <% end %>
+                    <!-- <p>Utiliser dans 4 objets</p> -->
+                    <p class="description"><%= snippet.user.fullname %></p>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <%= link_to t("snippet.actions.new"), new_snippet_path, class:"btn btn-colored" %>
+        </div>
+
+
+        <div id="object-item" class="item-body-select">
+          I'm Object
+        </div>
+
+
+        <div id="like-item" class="item-body-select">
+          I'm Like
+        </div>
+
+
+        <div id="setting-item" class="item-body-select">
+          <% if current_user %>
+            <%= link_to t("actions.edit_account"), edit_user_registration_path, class:"btn btn-colored" %>
+            <%= link_to t("actions.edit_profile"), edit_profile_path, class:"btn btn-colored" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <% end %>
 </div>
-<%= link_to t("snippet.actions.new"), new_snippet_path, class:"btn btn-colored" %>

@@ -3,6 +3,12 @@
     <div class="form col-sm-6 col-sm-offset-3">
       <h2><%= t "actions.edit" %> <%= @user.fullname %></h2>
       <%= form_for @user, url: {action: "update"} do |f| %>
+
+        <div class="form-group">
+          <%= f.label :nickname %>
+          <%= f.text_field :nickname, class:"form-control" %>
+        </div>
+
         <div class="form-group">
           <%= f.label :firstname %>
           <%= f.text_field :firstname, class:"form-control" %>
