@@ -4,7 +4,7 @@
       <h2><%= t "actions.edit" %> <%= @user.fullname %></h2>
       <%= form_for @user, url: {action: "update"} do |f| %>
 
-        <div class="form-group">
+        <div class="form-group test">
           <%= f.label :nickname %>
           <%= f.text_field :nickname, class:"form-control" %>
         </div>

@@ -105,11 +105,24 @@
     .body-select {
       font-weight: 300;
       margin-bottom: 32px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+      .container-select {
+        @include transition(.7s);
+        width: 600%;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
       .item-body-select {
+        display: block;
         border-bottom: 1px solid #e4e4e4;
-        display: none;
+        display: block;
         padding: 32px;
-
+        flex: 1;
         &.active {
           display: block;
         }

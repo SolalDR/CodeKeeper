@@ -14,7 +14,7 @@
 #
 
 class Snippet < ApplicationRecord
-  has_many :snippet_versions
+  has_many :snippet_versions, :dependent => :destroy
   belongs_to :lang
   belongs_to :user
   accepts_nested_attributes_for :snippet_versions

@@ -70,11 +70,18 @@ class SnippetVersionsController < ApplicationController
   # DELETE /snippet_versions/1
   # DELETE /snippet_versions/1.json
   def destroy
-    puts "*"*100
     @snippet_version.destroy
-    respond_to do |format|
-      format.html { redirect_to snippet_versions_url, notice: I18n.t("snippet_version.success.destroy") }
-      format.json { head :no_content }
+    if @snippet.snippet_versions.empty?
+      @snippet.destroy
+      respond_to do |format|
+        format.html { redirect_to profile_path, notice: I18n.t("snippet_version.success.destroy") }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @snippet, notice: I18n.t("snippet_version.success.destroy") }
+        format.json { head :no_content }
+      end
     end
   end
 
