@@ -5,7 +5,11 @@ DOMTokenList.prototype.replace =function(arg1, arg2){
 
 function getTarget(url){
   var match = url.match(/.+?(#.+)$/);
-  return match[1] ? match[1] : null;
+  if( match ) {
+    return match[1] ? match[1] : null;
+  } else {
+    return null;
+  }
 }
 
 TabsManage = {
@@ -86,8 +90,9 @@ TabsManage = {
       this.onItemsClick();
       if(this.itemsBody.length !== this.itemsHead.length) console.warn("Le nombre d'élément itemHead ne correspond par au nombre d'élément body");
       var response = this.findActive(window.location.href);
-      console.log(response);
-      this.active(response);
+      if( response && response.head ) {
+        this.active(response);
+      }
     }
   }
 

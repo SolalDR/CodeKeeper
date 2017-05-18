@@ -47,7 +47,7 @@
       background-color: #F1E05A;
       color: black;
       float: left;
-      padding: 8px;
+      padding: 6px 10px;
       font-weight: 100;
       margin-left: 5px;
     }
@@ -109,4 +109,10 @@
 
 .snippet-form {
   margin-top: $medium-pad;
+}
+
+@media screen and (max-width: 630px){
+  #snippet_show .body-show #code {
+    width: 100%;
+  }
 }

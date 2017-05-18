@@ -10,7 +10,7 @@ SearchManage = {
     self.responses = [];
     self.responseSearch.innerHTML = "";
     var snippets = JSON.parse(response);
-    if(snippets){
+    if(snippets && snippets.length){
       self.display();
       var protoReplace = "";
       for(i=0; i<snippets.length; i++){
