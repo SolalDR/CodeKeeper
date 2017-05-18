@@ -16,6 +16,10 @@ class SnippetVersion < ApplicationRecord
   VERSION_TYPE = [["big", 0], ["medium", 1], ["small", 2]]
   belongs_to :snippet
 
+  validates :content, presence: true
+  validates :version, presence: true
+
+
   def type_version=(version)
     version = version.to_i
     last = self.snippet.snippet_versions.last

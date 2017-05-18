@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
   load_and_authorize_resource
 
+
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
@@ -30,16 +31,25 @@ class SnippetsController < ApplicationController
   # POST /snippets.json
   def create
     @snippet = Snippet.new snippet_params.except(:snippet_versions_attributes)
-    @snippet.user = current_user
-    respond_to do |format|
-      if @snippet.save && @snippet.update(snippet_params.slice(:snippet_versions_attributes))
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
-        format.json { render :show, status: :created, location: @snippet }
-      else
-        format.html { render :new }
-        format.json { render json: @snippet.errors, status: :unprocessable_entity }
+
+    if !validate_params_create
+      flash[:notice] = "Il faut rentrer du contenu dans votre snippet"
+      redirect_to :new_snippet
+    else
+
+      @snippet.user = current_user
+      respond_to do |format|
+        if @snippet.save && @snippet.update(snippet_params.slice(:snippet_versions_attributes))
+          format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
+          format.json { render :show, status: :created, location: @snippet }
+        else
+          format.html { render :new }
+          format.json { render json: @snippet.errors, status: :unprocessable_entity }
+        end
       end
+
     end
+    
   end
 
   # PATCH/PUT /snippets/1
@@ -81,6 +91,14 @@ class SnippetsController < ApplicationController
     def set_meta_tags_page
       set_meta_tags title: @snippet.name,
                     description: @snippet.description
+    end
+
+    def validate_params_create
+      if snippet_params[:snippet_versions_attributes]["0"][:content].to_s.empty?
+        return false
+      else
+        return true
+      end
     end
 
     def check_snippet_user

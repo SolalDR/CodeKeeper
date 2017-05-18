@@ -22,6 +22,17 @@ form {
   }
 }
 
+.checkbox {
+  display: inline-block;
+  input[type="checkbox"] {
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    top: 1px;
+    left: 0px;
+  }
+}
+
 .form-devise {
   margin-bottom: 96px;
   margin-top: $small-pad;

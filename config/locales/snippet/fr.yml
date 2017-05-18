@@ -19,3 +19,9 @@ fr:
           name: "Nom du snippet"
           lang_id: "Language utilisé"
           snippet_versions: "Dernière version"
+    errors:
+      models:
+        snippet:
+          attributes:
+            name:
+              blank: Votre Snippet doit avoir un nom

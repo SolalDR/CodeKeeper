@@ -19,6 +19,9 @@ class Snippet < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :snippet_versions
 
+  validates :name, presence: true
+
+
   def actual
     self.snippet_versions.last
   end
