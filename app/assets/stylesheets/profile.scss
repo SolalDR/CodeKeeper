@@ -106,7 +106,6 @@
       font-weight: 300;
       margin-bottom: 32px;
       width: 100%;
-      overflow: hidden;
       position: relative;
       height: 100vh;
       .container-select {
@@ -128,6 +127,9 @@
         }
         &:target {
           display: block;
+        }
+        &#setting-item {
+          text-align: center;
         }
       }
     }

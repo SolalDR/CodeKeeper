@@ -69,8 +69,7 @@
 
 
           <div id="setting-item" class="item-body-select">
-            <h3>Réglages</h3>
-            <p>Modifier vos informations de connexions ainsi que vos donnée personnelles</p>
+            <p class="margin-top-medium margin-bottom-medium">Modifier vos informations de connexions ainsi que vos donnée personnelles</p>
             <% if current_user %>
               <%= link_to t("actions.edit_account"), edit_user_registration_path, class:"btn btn-colored" %>
               <%= link_to t("actions.edit_profile"), edit_profile_path, class:"btn btn-colored" %>

@@ -20,9 +20,18 @@
           </div>
         <% end -%>
 
-        <div class="actions">
+        <div class="actions margin-top-medium">
           <%= render "devise/shared/links" %>
           <%= f.submit t("devise.sessions.new.sign_in"), class:"btn btn-colored" %>
+          <%- if devise_mapping.omniauthable? %>
+            <%- resource_class.omniauth_providers.each do |provider| %>
+              <% if provider == :github %>
+                <%= link_to(omniauth_authorize_path(resource_name, provider), class:"omniauth-awesome margin-top-small") do %>
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <% end -%>
+          <% end -%>
         </div>
       <% end %>
     </div>
