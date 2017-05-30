@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+
   root "application#home"
+
   resources :snippets do
     resources :snippet_versions, only: [:new]
   end
+
   resources :snippet_versions, except: [:new, :index]
 
   patch "profile/udpate", to: "profile#update", as: :profile_update
 
   get "profile", to: "profile#show", as: :profile
   get "profile/edit", to: "profile#edit", as: :edit_profile
+  get "like/:key/:id", to: "profile#like", as: :like
+  get "unlike/:key/:id", to: "profile#unlike", as: :unlike
 
   post "search", to: "application#search", as: :search
 

@@ -5,6 +5,8 @@ fr:
       edit: "Editer snippet"
       more: "Voir le snippet"
       back: "Retour au snippet"
+      like: Suivre
+      unlike: Ne plus suivre
       parameters: "Paramètres du snippet"
     index:
       title: "Tous les snippets"

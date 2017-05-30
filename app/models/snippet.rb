@@ -15,6 +15,7 @@
 
 class Snippet < ApplicationRecord
   has_many :snippet_versions, :dependent => :destroy
+  has_many :likes, :as => :likable
   belongs_to :lang
   belongs_to :user
   accepts_nested_attributes_for :snippet_versions

@@ -40,6 +40,7 @@ class User < ApplicationRecord
   validates_presence_of :firstname, :lastname
 
   has_many :snippets
+  has_many :likes
 
 
   def self.from_omniauth(auth)
@@ -59,6 +60,14 @@ class User < ApplicationRecord
     end
   end
 
+  def liked_snippets
+    likes = self.likes.where(likable_type: "snippet")
+    snippets = []
+    likes.each do |like|
+      snippets << Snippet.find(like.likable_id)
+    end
+    return snippets
+  end
 
   def fullname
     return self.firstname + " " + self.lastname

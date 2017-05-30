@@ -18,6 +18,10 @@
         <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
         <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
       <% end %>
+
+      <% if snippet.user != current_user  %>
+        <%= link_to t("actions.like"), like_path({key: "snippet", id: snippet.id }), class:"btn btn-dark" %>
+      <% end %>
       <!-- <p>Utiliser dans 4 objets</p> -->
       <p class="description"><%= snippet.user.fullname %></p>
     </div>

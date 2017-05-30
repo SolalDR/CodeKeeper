@@ -40,6 +40,44 @@ class ProfileController < ApplicationController
     end
   end
 
+  def like
+    @user = current_user
+    # Get object liked
+    if params[:key] == "snippet"
+      obj =  Snippet.find(params[:id])
+    end
+    # If current_user is not owner
+    if obj && obj.user != @user
+      like = @user.likes.find_by(likable_type: params[:key], likable_id: params[:id])
+      # And he doesn't like yet
+      if !like
+        like = Like.create(user: @user, likable_type: params[:key], likable_id: params[:id])
+      end
+    end
+
+    redirect_to profile_path
+  end
+
+
+
+  def unlike
+    @user = current_user
+    # Get object liked
+    if params[:key] == "snippet"
+      obj =  Snippet.find(params[:id])
+    end
+    # If current_user is not owner
+    if obj && obj.user != @user
+      like = @user.likes.find_by(likable_type: params[:key], likable_id: params[:id])
+      # And he doesn't like yet
+      if like
+        like.destroy
+      end
+    end
+
+    redirect_to profile_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:description, :url_site, :url_github, :lastname, :firstname, :nickname)

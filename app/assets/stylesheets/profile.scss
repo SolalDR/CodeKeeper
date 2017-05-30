@@ -108,6 +108,7 @@
       width: 100%;
       position: relative;
       height: 100vh;
+      overflow-x: hidden;
       .container-select {
         @include transition(.7s);
         width: 600%;

@@ -64,7 +64,11 @@
 
 
           <div id="like-item" class="item-body-select">
-            I'm Like
+            <div class="snippets list-drop-down">
+              <% @user.liked_snippets.each_with_index do |snippet, i| %>
+              <%= render "snippets/product-drop-down", snippet: snippet %>
+              <% end %>
+            </div>
           </div>
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425220802) do
+ActiveRecord::Schema.define(version: 20170529205752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20170425220802) do
     t.string   "color",      default: "#FFFFFF",    null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string   "likable_type"
+    t.integer  "likable_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "snippet_versions", force: :cascade do |t|
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170425220802) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "likes", "users"
   add_foreign_key "snippet_versions", "snippets"
   add_foreign_key "snippets", "langs"
 end
