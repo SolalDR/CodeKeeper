@@ -6,9 +6,9 @@ This rails application is made for all the developpers who likes to create their
 
 ## Configuration
 
-* Ruby version : 2.3.1
+* Ruby version : 2.4.2
 * Rails version : 5.0.2
-* Database : sqlite
+* Database : postgres
 
 ## You want to help
 <a href="https://github.com/SolalDR/CodeKeeper/blob/master/TODO.md">To do</a>
