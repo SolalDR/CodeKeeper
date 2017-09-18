@@ -12,11 +12,8 @@ __Design / Intégration :__
 __Javascript :__
 - Fonctionnalité de filtres
 - gérer mode codemirror
-- intégrer gem markdown pour la documentation des snippets
 
 __Back :__
-- Créer modèle Object
-- ajouter champs type au snippet : function | prototype | method | object
 - changer redirection après supression d'une version
 
 
