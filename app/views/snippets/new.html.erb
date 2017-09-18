@@ -2,6 +2,6 @@
     <div class="col-sm-6 col-sm-offset-3">
       <h1><%= t("snippet.actions.new") %></h1>
       <%= render 'form', snippet: @snippet %>
-      <%= link_to t("actions.back"), snippets_path, class:"btn btn-dark" %>
+      <%= link_to t("actions.back"), user_snippets_path(user_id: @user), class:"btn btn-dark" %>
     </div>
   </div>

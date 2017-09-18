@@ -3,24 +3,32 @@ class SnippetsController < ApplicationController
 
 
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
+ 
+  before_action :set_user
   before_action :check_snippet_user, only: [:edit, :update, :destroy]
 
   # GET /snippets
   # GET /snippets.json
+
   def index
-    @snippets = Snippet.where(private: false)
+    @snippets = @user.snippets; 
+    @snippets = @snippets.not_private unless @user.id == current_user.id
   end
 
   # GET /snippets/1
   # GET /snippets/1.json
   def show
+    if current_user && current_user.id != @user.id && @snippet.private
+      throw ActiveRecord::RecordNotFound
+    end
   end
 
   # GET /snippets/new
   def new
-    @snippet = Snippet.new
+    @snippet = Snippet.new(user: current_user)
   end
 
   # GET /snippets/1/edit
@@ -40,7 +48,7 @@ class SnippetsController < ApplicationController
       @snippet.user = current_user
       respond_to do |format|
         if @snippet.save && @snippet.update(snippet_params.slice(:snippet_versions_attributes))
-          format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
+          format.html { redirect_to user_snippet_path(id:@snippet.id), notice: 'Snippet was successfully created.' }
           format.json { render :show, status: :created, location: @snippet }
         else
           format.html { render :new }
@@ -102,9 +110,13 @@ class SnippetsController < ApplicationController
     end
 
     def check_snippet_user
-      if @snippet.user != current_user
-        redirect_to @snippet, notice: "Vous n'avez pas la permission de modifier ou supprimer ce snippet."
+      if @user.id != current_user.id
+        redirect_to [@snippet.user, @snippet], notice: "Vous n'avez pas la permission de modifier ou supprimer ce snippet."
       end
+    end
+
+    def set_user 
+      @user = User.find(params[:user_id]); 
     end
 
 end

@@ -1,21 +1,9 @@
 class ProfileController < ApplicationController
 
-  def show
-    if current_user
-      @user = current_user
-    else
-      flash[:notice] = "Connectez vous d'abord pour accéder à votre profil."
-      redirect_to new_user_session_path
-    end
-  end
+  before_action :set_user 
+  before_action :is_current_user, only: [:edit, :update, :destroy]
 
-  def visit
-    if params[:id]
-      @user = User.find(params[:id])
-      if @user
-        redirect_to "profile#show"
-      end
-    end
+  def show
   end
 
   def edit
@@ -31,7 +19,7 @@ class ProfileController < ApplicationController
     @user = current_user
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to profile_path, notice: 'Snippet was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Snippet was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -39,6 +27,7 @@ class ProfileController < ApplicationController
       end
     end
   end
+
 
   def like
     @user = current_user
@@ -54,8 +43,7 @@ class ProfileController < ApplicationController
         like = Like.create(user: @user, likable_type: params[:key], likable_id: params[:id])
       end
     end
-
-    redirect_to profile_path
+    redirect_to user_path(current_user)
   end
 
 
@@ -75,11 +63,24 @@ class ProfileController < ApplicationController
       end
     end
 
-    redirect_to profile_path
+    redirect_to user_path(current_user)
   end
 
   private
     def user_params
       params.require(:user).permit(:description, :url_site, :url_github, :lastname, :firstname, :nickname)
+    end
+
+    def set_user 
+      @user = User.find(params[:id]); 
+      if !@user 
+        redirect_to root_path
+      end
+    end
+
+    def is_current_user 
+      if !current_user ||current_user.id != @user.id
+        throw ActiveRecord::RecordNotFound
+      end 
     end
 end

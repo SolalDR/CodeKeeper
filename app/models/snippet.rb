@@ -22,6 +22,7 @@ class Snippet < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :not_private, -> { where private: false }
 
   def actual
     self.snippet_versions.last
@@ -30,4 +31,5 @@ class Snippet < ApplicationRecord
   def to_s
     self.name
   end
+
 end

@@ -1,20 +1,21 @@
 <section class="sidebar">
 
 	<div class="profil">
-		<img src="" alt="" class="profil__avatar">
+		<%= image_tag "avatar", class:"profil__avatar" %>
 	
 		<div class="profil__info-container">
 			<p class="profil__pseudo"><%= user.nickname %></p>
 			<p class="profil__fullname"><%= user.fullname %></p>
 		</div>
 		
-		<div class="profil__btn-container">
-			<% if user.id == current_user.id %>
-				<a href="" class="profil__edit-btn"></a>
-			<% else %>
-				<a href="" class="profil__starred-btn"></a>
-			<% end %>
-		</div>
+		<% if user.id == current_user.id %>
+			<%= link_to "", edit_user_path(id: current_user.id), class:"profil__edit-btn" %>
+		<% else %>
+			<%# 
+			TODO: Implement Relation User has_many likes  
+			<a href="" class="profil__starred-btn"></a>
+			%>
+		<% end %>
 		
 	</div>
 

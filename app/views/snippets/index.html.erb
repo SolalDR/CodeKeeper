@@ -5,5 +5,5 @@
     <%= render "product-drop-down", snippet: snippet %>
     <% end %>
   </div>
-  <%= link_to t("snippet.actions.new"), new_snippet_path, class:"btn btn-colored" %>
+  <%= link_to t("snippet.actions.new"), new_user_snippet_path(user_id: @user), class:"btn btn-colored" %>
 </div>

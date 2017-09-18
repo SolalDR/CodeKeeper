@@ -2,6 +2,6 @@
   <div class="col-sm-8 col-sm-offset-2">
     <h1>Nouvelle version | <span class="code"><%= @snippet.name %></span></h1>
     <%= render 'form', snippet_version: @snippet_version %>
-    <%= link_to 'Retour', snippet_path(@snippet_version.snippet_id), class:"btn btn-dark right" %>
+    <%= link_to 'Retour', user_snippet_path(user_id: @snippet.user, id: @snippet), class:"btn btn-dark right" %>
   </div>
 </div>

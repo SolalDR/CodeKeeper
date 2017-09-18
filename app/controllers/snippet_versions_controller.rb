@@ -27,9 +27,6 @@ class SnippetVersionsController < ApplicationController
     end
   end
 
-  # GET /snippet_versions/1/edit
-  def edit
-  end
 
   # POST /snippet_versions
   # POST /snippet_versions.json
@@ -39,12 +36,12 @@ class SnippetVersionsController < ApplicationController
     puts @last_version.content
     @snippet_version = SnippetVersion.new(snippet_version_params)
     if @last_version.content == snippet_version_params[:content]
-      redirect_to @snippet, notice: I18n.t("snippet_version.error.same_content")
+      redirect_to [current_user, @snippet], notice: I18n.t("snippet_version.error.same_content")
       return nil
     end
     respond_to do |format|
       if @snippet_version.save
-        format.html { redirect_to @snippet_version.snippet, notice: I18n.t("snippet_version.success.create") }
+        format.html { redirect_to [current_user, @snippet], notice: I18n.t("snippet_version.success.create") }
         format.json { render :show, status: :created, location: @snippet_version }
       else
         format.html { render :new }
@@ -58,7 +55,7 @@ class SnippetVersionsController < ApplicationController
   def update
     respond_to do |format|
       if @snippet_version.update(snippet_version_params)
-        format.html { redirect_to @snippet_version.snippet, notice: I18n.t("snippet_version.success.update") }
+        format.html { redirect_to [current_user, @snippet], notice: I18n.t("snippet_version.success.update") }
         format.json { render :show, status: :ok, location: @snippet_version }
       else
         format.html { render :edit }
@@ -74,12 +71,12 @@ class SnippetVersionsController < ApplicationController
     if @snippet.snippet_versions.empty?
       @snippet.destroy
       respond_to do |format|
-        format.html { redirect_to profile_path, notice: I18n.t("snippet_version.success.destroy") }
+        format.html { redirect_to user_path(current_user), notice: I18n.t("snippet_version.success.destroy") }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to @snippet, notice: I18n.t("snippet_version.success.destroy") }
+        format.html { redirect_to [current_user, @snippet], notice: I18n.t("snippet_version.success.destroy") }
         format.json { head :no_content }
       end
     end
@@ -98,8 +95,8 @@ class SnippetVersionsController < ApplicationController
     end
 
     def check_snippet_version_user
-      if @snippet && @snippet.user != current_user
-        redirect_to @snippet, notice: "Vous n'avez pas la permission de modifier ou supprimer cet version de snippet."
+      if @snippet && @snippet.user != current_user 
+        redirect_to [current_user, @snippet], notice: "Vous n'avez pas la permission de modifier ou supprimer cet version de snippet."
       end
     end
 

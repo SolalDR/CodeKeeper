@@ -13,10 +13,10 @@
     <div class="code"><textarea class="codemirror-content" name="name" rows="8" cols="80"  data-cdMirrorMode="<%= snippet.lang.cdMirror %>"><%= snippet.snippet_versions.last.content %></textarea></div>
     <div class="content">
       <div class="description"><%= raw snippet.description %></div>
-      <%= link_to t("actions.more"), snippet, class:"btn btn-dark" %>
+      <%= link_to t("actions.more"), user_snippet_path(id:snippet.id, user_id: snippet.user), class:"btn btn-dark" %>
       <% if current_user && snippet.user == current_user %>
-        <%= link_to t("actions.destroy"), snippet, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
-        <%= link_to t("actions.edit"), edit_snippet_path(snippet), class:"btn btn-dark" %>
+        <%= link_to t("actions.destroy"), user_snippet_path(id:snippet, user_id: current_user), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-dark" %>
+        <%= link_to t("actions.edit"), edit_user_snippet_path(id: snippet, user_id: current_user), class:"btn btn-dark" %>
       <% end %>
 
       <% if snippet.user != current_user  %>

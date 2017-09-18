@@ -2,27 +2,21 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount Ckeditor::Engine => '/ckeditor'
 
+  root "application#home"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  root "application#home"
-
-  resources :snippets do
-    resources :snippet_versions, only: [:new]
+  resources :users, :controller => :profile do
+    resources :snippets do 
+      resources :snippet_versions
+    end
   end
 
-  resources :snippet_versions, except: [:new, :index]
-
-  patch "profile/udpate", to: "profile#update", as: :profile_update
-
-  get "profile", to: "profile#show", as: :profile
-  get "profile/edit", to: "profile#edit", as: :edit_profile
   get "like/:key/:id", to: "profile#like", as: :like
   get "unlike/:key/:id", to: "profile#unlike", as: :unlike
 
   post "search", to: "application#search", as: :search
 
-  # get '/snippets/:id/new-v', to: 'snippet_versions#new', as: :new_version_from_snippet
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

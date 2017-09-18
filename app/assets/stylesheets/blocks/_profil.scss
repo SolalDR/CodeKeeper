@@ -16,8 +16,8 @@
 
 	&__info-container { 
 		display: inline-block;
-		width: calc(100% - #{$big-pad});
-		padding-left: $small-pad/2;
+		width: calc(100% - #{3*$small-pad});
+		padding-left: $small-pad;
 	}
 	&__pseudo {
 		font-size: 20px; 
@@ -28,14 +28,23 @@
 	}
 	
 
-	&__btn-container {
-	
+	&__edit-btn, &__starred-btn {
+		right: $medium-pad;
+		top: $medium-pad;
+		height: 3*$small-pad;
+		width: 3*$small-pad;
+		position: absolute;
+		background-repeat: no-repeat;
+		background-position: 100% center;
+		background-size: 50%;
 	}
+
 	&__edit-btn {
-
+		background-image: image-url("pencil-light");
 	}
+	
 	&__starred-btn {
-
+		background-image: image-url("pencil-light");
 	}
 
 
