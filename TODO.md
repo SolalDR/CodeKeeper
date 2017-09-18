@@ -2,7 +2,6 @@
 
 __Design / Intégration :__
 - designer + intégrer homepage
-- Bug, attribute lang reinitialiser à html à l'édition
 - intégrer snippet#edit
 - faire responsive snippet/snippet_version
 - translate snippet

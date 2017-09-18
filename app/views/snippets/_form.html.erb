@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= f.label :lang_id %>
     <% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
-    <%= select_tag "snippet[lang_id]", options_for_select(langs_array), class:"form-control" %>
+    <%= select_tag "snippet[lang_id]", options_for_select(langs_array, snippet.lang_id), class:"form-control" %>
   </div>
 
   <div class="checkbox">
