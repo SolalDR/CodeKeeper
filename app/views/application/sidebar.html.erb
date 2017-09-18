@@ -1,0 +1,56 @@
+<section class="sidebar">
+
+	<div class="profil">
+		<img src="" alt="" class="profil__avatar">
+	
+		<div class="profil__info-container">
+			<p class="profil__pseudo"><%= user.nickname %></p>
+			<p class="profil__fullname"><%= user.fullname %></p>
+		</div>
+		
+		<div class="profil__btn-container">
+			<% if user.id == current_user.id %>
+				<a href="" class="profil__edit-btn"></a>
+			<% else %>
+				<a href="" class="profil__starred-btn"></a>
+			<% end %>
+		</div>
+		
+	</div>
+
+	<% if user.description %>
+	<div class="profil-description">
+		<p class="profil-description__content"><%= user.description %></p>
+
+
+		<%#
+
+		TODO: Implement User has_many languages
+
+		<div class="language-list">
+			<ul>
+				<li class="language-list__item">JS</li>
+				<li class="language-list__item">JS</li>
+				<li class="language-list__item">JS</li>
+				<li class="language-list__item">JS</li>
+			</ul>
+		</div> 	
+
+		%>
+	</div>
+	<% end %>
+
+	<div class="social-list">
+		<a href="<%= user.url_site %>" class="social-list__item"><%= user.url_site %></a>
+		<a href="<%= user.url_github %>" class="social-list__item"><%= user.url_github %></a>
+	</div>
+
+	<div class="sidebar__menu">
+		<ul>
+			<li><a class="sidebar__menu-item" href="">Snippets</a></li>
+			<li><a class="sidebar__menu-item" href="">Objects</a></li>
+			<li><a class="sidebar__menu-item" href="">Starred</a></li>
+		</ul>
+	</div>
+	
+</section>

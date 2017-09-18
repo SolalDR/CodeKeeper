@@ -1,0 +1,17 @@
+.social-list {
+	
+	margin: $medium-pad;
+	
+	&__item {
+		display: block; 
+		color: white; 
+		text-decoration: none; 
+		line-height: 1.5em;
+		&:hover{
+			color:$color-2;
+			text-decoration: none;
+		}
+	}
+
+
+}

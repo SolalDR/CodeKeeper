@@ -1,0 +1,55 @@
+.profil {
+
+	margin: $medium-pad;
+	border-bottom: 1px solid #DDD; 
+	min-height: $big-pad+20px;
+
+	&__avatar {
+		display: inline-block;
+		width: $small-pad*3; 
+		height: $small-pad*3; 
+		border-radius: $radius;
+		background-color: #DDD; 
+		float: left;
+	}
+
+
+	&__info-container { 
+		display: inline-block;
+		width: calc(100% - #{$big-pad});
+		padding-left: $small-pad/2;
+	}
+	&__pseudo {
+		font-size: 20px; 
+		padding-bottom: $small-pad/2;
+	}
+	&__fullname {
+		font-size: 15px;
+	}
+	
+
+	&__btn-container {
+	
+	}
+	&__edit-btn {
+
+	}
+	&__starred-btn {
+
+	}
+
+
+
+}
+
+.profil-description {
+	margin: $medium-pad;
+	border-bottom: 1px solid #DDD; 
+	padding-bottom: $small-pad+$small-pad/2;
+	&__content {
+		font-style: italic; 
+		font-size: 14px;
+		line-height: 15px;
+		margin-bottom: $medium-pad;
+	}
+}
