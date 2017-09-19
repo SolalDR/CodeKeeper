@@ -10,34 +10,8 @@
 			<% end %>
 		</div>
 	</div>
-
-	<div class="search-helper">
-		<div class="search-helper__item">
-			<label for="" class="search-helper__item-label">Recherche par tags</label>
-			<input type="text" class="form-item form-item__search">
-		</div>
-
-		<div class="search-helper__item">
-			<label for="" class="search-helper__item-label">Trier par</label>
-			<div class="form-item form-item__select-container">
-			  <select class="form-item__select">
-			    <option value="alpha">Ordre alphabétique</option>
-			    <option value="starred">Nombre de starred</option>
-			    <option value="date">Date</option>
-			  </select>
-			</div>
-		</div>
 	
-		<div class="search-helper__item">
-			<label for="" class="search-helper__item-label">Ordre</label>
-			<input type="text" class="form-item form-item__search">
-		</div>
-
-		<div class="search-helper__item">
-			<label for="" class="search-helper__item-label">Filtrer</label>
-			<input type="text" class="form-item form-item__search">
-		</div>
-	</div>
+	<%= render template: "application/search-helper",  locals: { user:@user, snippets: @snippets } %>
 
 	 <div class="items">
 	 	 <% @snippets.each do |snippet| %>
@@ -64,9 +38,9 @@
 				<%= link_to "", user_snippet_path(id: snippet, user_id: snippet.user), class:"items__item-show" %>
     		</div>
     	<% end %>
-    	<% if current_user && current_user.id==@user.id && !@snippets %>
+    	<% if current_user && current_user.id==@user.id && @snippets.length == 0 %>
     	<p>Vous n'avez pas encore de snippets ! </p>
-    	<%= link_to "Créer un snippet !", new_user_snippet_path(user_id: @user), class:"btn btn-colored body-top__action" %>
+    	<%= link_to "Créer un snippet !", new_user_snippet_path(user_id: @user), class:"btn btn-colored margin-top-small" %>
     	<% end %>
 	 </div>
 
