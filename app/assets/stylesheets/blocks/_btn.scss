@@ -1,0 +1,26 @@
+.btn {
+	
+	display: inline-block;
+	padding: 5px 10px; 
+	background-color: $color-2; 
+	color: $color-1;
+
+	&--colored {
+
+	}
+	&--dark {
+
+	}
+	&--active, &:hover {
+
+	}
+
+	// Picto
+	&__ico {
+
+	} 
+	&--background {
+
+	}
+
+}

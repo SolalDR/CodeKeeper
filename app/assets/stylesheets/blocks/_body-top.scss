@@ -1,0 +1,21 @@
+.body-top {
+	display: block; 
+	padding: 15px 0; 
+	border-bottom: 3px solid $color-1;
+	
+	&__content {
+		font-size: 2em; 
+		font-weight: bold;	
+		display: inline-block;
+	}
+	
+	&__action-container {
+		float: right;
+	}
+	
+	&__action {
+		float: right;
+		margin-left: 10px;
+	}
+
+}

@@ -1,3 +1,16 @@
+<%= render template: "application/sidebar",  locals: { user:@user } %>
+
+<div class="body-aside">
+	<div class="body-top">
+		<h1 class="body-top__content"><%= t("snippet.index.title") %></h1>	
+		<div class="body-top__action-container">
+			<% if @user.id == current_user.id %>
+			<%= link_to t("snippet.actions.new"), new_user_snippet_path(user_id: @user), class:"btn btn-colored body-top__action" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
 <div class="last-snippets">
   <h2><%= t("snippet.index.title") %></h2>
   <div class="snippets list-drop-down">
@@ -5,5 +18,4 @@
     <%= render "product-drop-down", snippet: snippet %>
     <% end %>
   </div>
-  <%= link_to t("snippet.actions.new"), new_user_snippet_path(user_id: @user), class:"btn btn-colored" %>
 </div>
