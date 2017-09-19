@@ -65,7 +65,7 @@ class SnippetsController < ApplicationController
   def update
     respond_to do |format|
       if @snippet.update(snippet_params)
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
+        format.html { redirect_to user_snippet_path(user_id: @snippet.user, id:@snippet), notice: 'Snippet was successfully updated.' }
         format.json { render :show, status: :ok, location: @snippet }
       else
         format.html { render :edit }

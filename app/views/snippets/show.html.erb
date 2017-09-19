@@ -37,7 +37,7 @@
   <% if current_user && @snippet.user == current_user %>
     <div class="version">
       <% @snippet.snippet_versions.each do |version| %>
-        <p><%= link_to "Version : "+version.version, version %> - <%= link_to "Destroy", version, method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to "Version : "+version.version, user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id: @snippet, id: version) %> - <%= link_to "Destroy", user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id: @snippet, id: version), method: :delete, data: { confirm: "Are you sure?" } %></p>
       <% end %>
     </div>
   <% end %>

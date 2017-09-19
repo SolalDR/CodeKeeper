@@ -39,13 +39,35 @@
 		</div>
 	</div>
 
-</div>
+	 <div class="items">
+	 	 <% @snippets.each do |snippet| %>
+    		<div class="items__item">
+    			<div class="items__item-head">
+    				<p class="items_item-title"><%= snippet.name %></p>
+    				<% if snippet.private %>
+					<%# TODO: Integrate private %>
+    				<% end %>
+    				<% if snippet %>
+    				<%# TODO: Implement Starred button %>
+    				<% end %>
+    			</div>
+				
+				<div class="items__item-body">
+					<div class="items__item-content"><%= raw snippet.description %></div>
+					<div class="language-list">
+						<ul>
+							<li style="background-color:<%= snippet.lang.bgColor %>; color:<%= snippet.lang.color %>;" class="language-list__item"><%= snippet.lang.cd.upcase %></li>
+						</ul>
+					</div> 	
+				</div>
 
-<div class="last-snippets">
-  <h2><%= t("snippet.index.title") %></h2>
-  <div class="snippets list-drop-down">
-    <% @snippets.each do |snippet| %>
-    <%= render "product-drop-down", snippet: snippet %>
-    <% end %>
-  </div>
+				<%= link_to "", user_snippet_path(id: snippet, user_id: snippet.user), class:"items__item-show" %>
+    		</div>
+    	<% end %>
+    	<% if current_user && current_user.id==@user.id && !@snippets %>
+    	<p>Vous n'avez pas encore de snippets ! </p>
+    	<%= link_to "Créer un snippet !", new_user_snippet_path(user_id: @user), class:"btn btn-colored body-top__action" %>
+    	<% end %>
+	 </div>
+
 </div>

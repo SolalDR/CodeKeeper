@@ -48,7 +48,9 @@
 
 	<div class="sidebar__menu">
 		<ul>
-			<li><a class="sidebar__menu-item" href="">Snippets</a></li>
+			<li>
+			<%= link_to "Snippets", user_snippets_path(user_id: @user), class:"sidebar__menu-item"  %>
+			</li>
 			<li><a class="sidebar__menu-item" href="">Objects</a></li>
 			<li><a class="sidebar__menu-item" href="">Starred</a></li>
 		</ul>

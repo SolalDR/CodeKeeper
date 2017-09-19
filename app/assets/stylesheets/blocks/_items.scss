@@ -1,0 +1,60 @@
+.items {
+	padding: $medium-pad 0; 
+	&__item {
+		width: 200px;
+		height: 200px;
+		box-shadow: 2px 2px 15px rgba(0,0,0,.2);
+		border-radius: $radius;
+		position: relative;
+		@include transition(.4s);
+		&:hover {
+			box-shadow: 0 0 15px rgba(0,0,0,.1); 
+		}
+	}
+	
+	&__item-show {
+		position: absolute;
+		display: block;
+		text-decoration: none;
+		bottom: 0;
+		left: 0; 
+		height: 40px; 
+		width: 100%;
+		background-color: $color-1;
+		color: white; 
+		border-bottom-right-radius: $radius;
+		border-bottom-left-radius: $radius;
+		background-image: image-url("eye");
+		background-size: 30px;
+		background-repeat: no-repeat;
+		background-position: center;
+		@include transition(.4s);
+		&:hover {
+			background-color: $color-1-dark;
+		}
+	}
+
+	&__item-head {
+		width: 100%;
+		padding: 8px $small-pad;
+		border-bottom: 1px solid black;
+	}
+
+	&__item-title {
+
+	}
+
+	&__item-body {
+		padding: $small-pad/2 $small-pad;
+
+	}
+
+	&__item-content {
+		font-size: 14px;
+		line-height: 1.5em;
+		margin-bottom: $small-pad;
+	}
+
+
+}
+
