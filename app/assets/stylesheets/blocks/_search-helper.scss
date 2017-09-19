@@ -1,0 +1,21 @@
+.search-helper {
+	display: block; 
+	width: 100%; 
+	background-color: white; 
+	padding: $small-pad 0; 
+	border-bottom: 1px solid $color-1;
+
+	&__item {
+		display: inline-block;
+		margin-right: $medium-pad;
+		vertical-align: top;
+	}
+
+	&__item-label {
+		font-size: 13px; 
+		font-weight: bold;
+	}
+
+
+
+}

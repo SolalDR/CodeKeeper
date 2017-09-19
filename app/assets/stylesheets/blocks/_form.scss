@@ -1,0 +1,52 @@
+.form-clasic {
+	
+	&__select-container {
+
+	}
+
+	&__select {
+
+	}
+
+
+
+
+}
+
+.form-item {
+	border: 1px solid #ccc;
+	width: $input-width;
+	height: $input-height; 
+	box-sizing: border-box;
+	border-radius: 3px;
+	font-size: 13px;
+	color: #444;
+	padding: 0 8px;
+	&__search {
+		
+	}
+
+
+	&__select {
+		padding: 3px 4px;
+	    width: 130%;
+	    border: none;
+	    box-shadow: none;
+	    background-color: transparent;
+	    background-image: none;
+	    -webkit-appearance: none;
+	       -moz-appearance: none;
+	            appearance: none;
+	    outline: none;
+		&-container {
+			padding: 0;
+		    margin: 0;
+		    overflow: hidden;
+		    background-color: #fff;
+		    background-image: image-url("arrow-down-dark");
+		    background-repeat: no-repeat;
+		    background-position: 90% 50%; 
+		    background-size: $input-height; 
+		}
+	}
+}
