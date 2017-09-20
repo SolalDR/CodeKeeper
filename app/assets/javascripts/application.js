@@ -25,7 +25,7 @@
 //= require codemirror/modes/htmlmixed
 //= require codemirror/modes/css
 //= require ckeditor/init
-//= require bootstrap
+
 
 // bespin base16-dark hopscotch railscasts
 
@@ -118,6 +118,8 @@ SnippetVersion = {
 
 
 window.addEventListener("turbolinks:load", function(){
+    $(".dropdown-button").dropdown();
+    $(".button-collapse").sideNav();
   CodemirrorManage.init();
   SearchManage.init();
   DropDown.init();

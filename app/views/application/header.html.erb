@@ -1,0 +1,36 @@
+
+<header class="materialize navbar-fixed">
+  <ul id="dropdown-snippet" class="dropdown-content">
+    <li><%= link_to "Create", new_user_snippet_path(current_user) %></li>
+    <li><%= link_to "All", user_snippets_path(current_user) %></li>
+  </ul>
+  <ul id="dropdown-account" class="dropdown-content">
+    <li><%= link_to t("user.profile"), user_path(current_user) %></li>
+    <li><%= link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete %></li>
+  </ul> 
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to root_path, class:"brand-logo" do %>
+        <%= image_tag "logo-plain.png", alt:t("title") %>
+      <% end %>
+
+      <%= form_tag search_path, class:" form-search hide-on-med-and-down", remote: true do %>
+      <div class="form-item__container">
+        <input id="search-input" placeholder="Rechercher" name="text" class="form-item form-search" type="search" required autofocus="true">
+        <!-- <button class="btn btn-colored" id="sidebar-right-btn">Filtres</button> -->
+      </div>
+      <% end %>
+      
+      <ul class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+            <li><a class="dropdown-button" href="#!" data-beloworigin="true" data-activates="dropdown-snippet">Snippets<i class="material-icons right fa fa-caret-down" aria-hidden="true"></i></a></li>
+            <li><a class="dropdown-button" href="#!" data-beloworigin="true" data-activates="dropdown-account">Mon Compte<i class="material-icons right fa fa-caret-down" aria-hidden="true"></i></a></li>
+        <% else %>
+            <li><%= link_to t("devise.sessions.new.sign_in"), new_user_session_path %></li>
+            <li><%= link_to t("devise.registrations.new.sign_up"), new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+

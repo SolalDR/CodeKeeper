@@ -16,7 +16,7 @@
 
 	&__info-container { 
 		display: inline-block;
-		width: calc(100% - #{3*$small-pad});
+		width: calc(100% - #{$big-pad});
 		padding-left: $small-pad;
 	}
 	&__pseudo {
