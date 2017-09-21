@@ -2,4 +2,11 @@
 	width: calc(100% - #{$sidebar-w} - #{$big-pad});
 	margin-left: $sidebar-w;
 	padding: $small-pad $medium-pad;
+
+	&__description {
+		padding: $small-pad 0 0 0;
+	}
+	.language-list {
+		margin-top: 0;
+	}
 }

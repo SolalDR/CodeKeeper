@@ -5,6 +5,15 @@ body {
   font-weight: 300;
 }
 
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+p {
+  padding: $small-pad 0; 
+}
+
 #turbolinks-progress-bar {
   background-color: $color-3;
 }
@@ -20,18 +29,6 @@ body {
   min-height: 100vh;
 }
 
-.margin-top-big {
-  margin-top: $big-pad;
-}
-
-.margin-top-medium {
-  margin-top: $medium-pad;
-}
-
-.padding-top-medium {
-  padding-top: $medium-pad;
-}
-
 
 .wrapper {
   width: 1080px;
@@ -41,6 +38,10 @@ body {
 
 .left {
   float: left;
+}
+
+.right {
+  float: right;
 }
 
 .uppercase {
@@ -58,20 +59,7 @@ body {
   }
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-.form-text {
-  color: #666;
-  font-size: .9em;
-  font-weight: 300;
-}
-input[type="checkbox"] + label {
-  display: inline-block;
-}
-.actions {
-  text-align: right;
-}
+
+
 
 

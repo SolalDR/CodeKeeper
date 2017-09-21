@@ -4,10 +4,8 @@
     <div class="body-top">
       <h1 class="body-top__content"><%= @snippet.name %></h1>  
       <div class="body-top__action-container">
-        <%= link_to "Destroy", user_snippet_path(user_id: @snippet.user, id: @snippet), method: :delete, data: { confirm: "Are you sure?" } %>
-        <%= link_to t("snippet_versions.actions.new"), new_user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id:@snippet), class:"btn btn-dark" %>
-
-        <%= link_to t("snippet.actions.back"), user_snippet_path(@snippet), class:"btn btn-colored btn--back body-top__action" %>
+        <%= link_to "+ Nouvelle version", new_user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id:@snippet), class:"btn btn-dark body-top__action" %>
+        <%= link_to "Supprimer Snippet", user_snippet_path(user_id: @snippet.user, id: @snippet), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn__ico btn__ico--danger body-top__action" %>
       </div>
     </div>
 

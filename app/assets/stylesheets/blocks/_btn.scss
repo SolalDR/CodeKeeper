@@ -18,6 +18,18 @@
 	&--active, &:hover {
 
 	}
+	&__ico {
+		padding-left: $medium-pad+$small-pad/2;
+		background-repeat: no-repeat;
+		background-position: 15px center;
+		background-size: 15px;
+		&--danger {
+			background-image: image-url("delete");
+			background-color: #FF6E3D;
+			color: white; 
+		}
+	}
+
 
 	// Picto
 	&__ico {
