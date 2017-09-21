@@ -1,13 +1,15 @@
 
 <header class="materialize navbar-fixed">
+  <% if user_signed_in? %>
   <ul id="dropdown-snippet" class="dropdown-content">
-    <li><%= link_to "Create", new_user_snippet_path(current_user) %></li>
-    <li><%= link_to "All", user_snippets_path(current_user) %></li>
+    <li><%= link_to "Create", new_user_snippet_path(user_id: current_user) %></li>
+    <li><%= link_to "All", user_snippets_path(user_id: current_user) %></li>
   </ul>
   <ul id="dropdown-account" class="dropdown-content">
     <li><%= link_to t("user.profile"), user_path(current_user) %></li>
     <li><%= link_to t("devise.sessions.sign_out"), destroy_user_session_path, method: :delete %></li>
   </ul> 
+  <% end %>
   <nav>
     <div class="nav-wrapper">
       <%= link_to root_path, class:"brand-logo" do %>

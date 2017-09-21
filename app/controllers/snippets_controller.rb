@@ -79,7 +79,7 @@ class SnippetsController < ApplicationController
   def destroy
     @snippet.destroy
     respond_to do |format|
-      format.html { redirect_to snippets_url, notice: 'Snippet was successfully destroyed.' }
+      format.html { redirect_to user_snippets_path(user_id: current_user), notice: 'Snippet was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

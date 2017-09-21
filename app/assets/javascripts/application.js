@@ -116,16 +116,42 @@ SnippetVersion = {
   }
 }
 
+function initObserver(){
+  var observer = new MutationObserver(function(mutations) {
+    // For the sake of...observation...let's output the mutation to console to see how this all works
+    mutations.forEach(function(mutation) {
+      console.log(mutation.type);
+    });    
+  });
+   
+  // Notify me of everything!
+  var observerConfig = {
+    attributes: true, 
+    childList: true, 
+    characterData: true 
+  };
+   
+  // Node, config
+  // In this case we'll listen to all changes to body and child nodes
+  var targetNode = document.getElementById("pickerContainer");
+  observer.observe(targetNode, observerConfig);
+}
 
 window.addEventListener("turbolinks:load", function(){
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
+    $('select').material_select();
+    initObserver();
+    // $('#pickerContainer').on('change', 'select', function(){ console.log("got you"); });
+
+   
+    Materialize.updateTextFields();
   CodemirrorManage.init();
-  SearchManage.init();
+  // SearchManage.init();
   DropDown.init();
   SnippetVersion.init();
   TabsManage.init();
-  initSideBar();
+  // initSideBar();
 }, false)
 
 // var item = document.querySelectorAll('.carousel-item');

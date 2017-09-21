@@ -2,117 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.last-snippets {
-  padding-top: $medium-pad;
-}
-#snippet_show {
-  padding-top: $medium-pad;
-  position: relative;
-  #notice {
-    margin-bottom: 1em;
-  }
-
-  h1 {
-    margin-bottom: $medium-pad;
-    color: #333;
-  }
-
-  .private {
-    float: right;
-    color: green;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 5px 10px;
-    border: 2px solid green;
-    position: absolute;
-    top: 42px;
-    right: 0;
-    &[data-private="true"]{
-      color: red;
-      border: 2px solid red;
+#code{
+  .code-version {
+    &.visible {
+      display: block;
     }
-  }
-
-  .info {
-    display: inline-block;
-    padding: 8px 10px;
-    background-color: black;
-    color: white;
-    font-weight: 100;
-    height: $medium-pad;
-    border: 0;
-  }
-  .header-show {
-    #snippet-version-edit {
-      background-color: #F1E05A;
-      color: black;
-      float: left;
-      padding: 6px 10px;
-      font-weight: 100;
-      margin-left: 5px;
+    &.hidden {
+      display: none;
     }
-  }
-  #select_version {
-    height: $medium-pad;
-    width: 100px;
-    box-shadow: none;
-    outline: none;
-    padding: 0;
-    border: 2px solid #f1e05a;
-    float: left;
-    box-sizing: border-box;
-    float: left;
-    .code-version {
-      &.visible {
-        display: block;
-      }
-      &.hidden {
-        display: none;
-      }
-    }
-  }
-  .body-show {
-    #code {
-      clear: both;
-      padding-top: $medium-pad;
-      width: 600px;
-      display: inline-block;
-      float: left;
-    }
-    .content {
-      padding: $medium-pad $small-pad $small-pad $medium-pad;
-      float: left;
-      width: calc(100% - 600px);
-      strong {
-        font-weight: bold;
-        color: #333;
-        display: block;
-        text-decoration: underline;
-        margin-bottom: $small-pad;
-      }
-      .description {
-        font-weight: 300;
-        color: #333;
-        margin-bottom: $small-pad;
-      }
-      .btn {
-        margin-right: $small-pad/2;
-        margin-bottom: 16px;
-      }
-    }
-  }
-  .version {
-    margin-top: $medium-pad;
-    clear: both;
   }
 }
 
-.snippet-form {
-  margin-top: $medium-pad;
-}
-
-@media screen and (max-width: 630px){
-  #snippet_show .body-show #code {
-    width: 100%;
-  }
-}

@@ -20,8 +20,26 @@
 	font-size: 13px;
 	color: #444;
 	padding: 0 8px;
+
+	&--sm {
+		width:25%;
+	}
+	&--md {
+		width:50%;
+	}
+	&--big {
+		width:100%;
+	}
+
 	&__search {
 		
+	}
+
+	&__mention {
+		font-size: 12px; 
+		&--danger {
+			color: #ed4343;
+		}
 	}
 
 

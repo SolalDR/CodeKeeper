@@ -1,3 +1,53 @@
+<%= render template: "application/sidebar",  locals: { user:@user } %>
+
+<div class="body-aside">
+    <div class="body-top">
+      <h1 class="body-top__content"><%= @snippet.name %></h1>  
+      <div class="body-top__action-container">
+        <%= link_to "Destroy", user_snippet_path(user_id: @snippet.user, id: @snippet), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to t("snippet_versions.actions.new"), new_user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id:@snippet), class:"btn btn-dark" %>
+
+        <%= link_to t("snippet.actions.back"), user_snippet_path(@snippet), class:"btn btn-colored btn--back body-top__action" %>
+      </div>
+    </div>
+
+  
+    <div class="body-aside__description">
+      <%= raw @snippet.description %>
+      <div class="language-list">
+        <ul><li class="language-list__item" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>"><%= @snippet.lang.cd %></li></ul>
+      </div>  
+    </div> 
+
+    <div>
+      <div class="materialize form">
+        <div id="pickerContainer" class="input-field form-item--sm">
+          <select id="select_version">
+            <% @snippet.snippet_versions.each_with_index do |v, i| %>
+            <% if i == @snippet.snippet_versions.length-1 %>
+              <option selected value="<%= i %>">v.<%= v.version %></option>
+            <% else %>
+              <option value="<%= i %>">v.<%= v.version %></option>
+            <% end %>
+            <% end %>
+          </select>
+        </div>  
+      </div>
+      <div id="code">
+      <% @snippet.snippet_versions.each_with_index do |v, i| %>
+        <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>" data-id="<%= v.id %>">
+          <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
 <div id="snippet_show">
   <h1><%= t("activerecord.models.snippet")%> | <span class="code"><%= @snippet.name %></span></h1>
   <p class="private" data-private="<%= @snippet.private %>"><%= t("scope.#{privateLib(@snippet.private)}") %></p>
@@ -15,13 +65,7 @@
     </select>
   </div>
   <div class="body-show">
-    <div id="code">
-    <% @snippet.snippet_versions.each_with_index do |v, i| %>
-      <div class="code-version <% if i == @snippet.snippet_versions.length-1 %>visible<% end %>" data-id="<%= v.id %>">
-        <textarea rows="8" cols="80" class="codemirror-content" data-cdMirrorMode="<%= @snippet.lang.cdMirror%>"><%= v.content %></textarea>
-      </div>
-    <% end %>
-    </div>
+
     <div class="content">
       <strong><%= t 'activerecord.attributes.snippet.description' %></strong>
       <div class="description"><%= raw @snippet.description %></div>
@@ -29,7 +73,6 @@
       <p class="description"><%= @snippet.user.fullname %></p>
       <% if current_user && @snippet.user == current_user %>
         <%= link_to t("snippet.actions.parameters"), edit_user_snippet_path(user_id:@snippet.user, id:@snippet), class:"btn btn-dark" %>
-        <%= link_to t("snippet_versions.actions.new"), new_user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id:@snippet), class:"btn btn-dark" %>
       <% end %>
     </div>
   </div>
@@ -37,7 +80,7 @@
   <% if current_user && @snippet.user == current_user %>
     <div class="version">
       <% @snippet.snippet_versions.each do |version| %>
-        <p><%= link_to "Version : "+version.version, user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id: @snippet, id: version) %> - <%= link_to "Destroy", user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id: @snippet, id: version), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p><%= link_to "Version : "+version.version, user_snippet_snippet_version_path(user_id: @snippet.user, snippet_id: @snippet, id: version) %> - </p>
       <% end %>
     </div>
   <% end %>

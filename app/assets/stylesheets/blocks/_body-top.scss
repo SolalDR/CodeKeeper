@@ -3,10 +3,12 @@
 	padding: 15px 0; 
 	border-bottom: 1px solid $color-1;
 	
-	&__content {
+	&__content, h1 {
 		font-size: 2em; 
 		font-weight: bold;	
 		display: inline-block;
+		margin: 0;
+		margin-bottom: 10px; 
 	}
 	
 	&__action-container {

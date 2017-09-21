@@ -10,31 +10,17 @@
     </div>
   <% end %>
 
-  <div class="input-field col s6">
-    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-    <label for="first_name">First Name</label>
+  
+  <div class="input-field form-item--md">
+    <%= f.text_field :name, class:"validate" %>
+    <%= f.label :name %>
   </div>
-
-
-  <div class="form-group">
-    <%= f.text_field :name, class:"form-control", placeholder: true %>
-  </div>
-
-  <div class="form-group">
-    <%= cktext_area :snippet, :description, cols: 40, ckeditor: { toolbar: 'mini' }, value: "Describe your snippet" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :lang_id %>
+  
+  <div class="input-field form-item--md">
     <% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
-    <%= select_tag "snippet[lang_id]", options_for_select(langs_array, snippet.lang_id), class:"form-control" %>
-  </div>
-
-  <div class="checkbox">
-    <%= f.label :private %>
-    <%= f.check_box :private %>
-  </div>
-
+    <%= select_tag "snippet[lang_id]", options_for_select(langs_array, snippet.lang_id) %>
+    <%= f.label :lang_id %>
+  </div>  
 
   <% if action_name != "edit" %>
   <% snip = SnippetVersion.new %>
@@ -44,6 +30,18 @@
     <%= ff.hidden_field :label, value:"First Version" %>
   <% end %><!-- fields for -->
   <% end %><!-- action name -->
+
+  <p>
+    <%= f.check_box :private, class:"filled-in", checked: true %>
+    <%= f.label :private %>
+  </p>
+  <p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
+
+  <div class="divider margin-bottom-medium margin-top-medium"></div>
+
+  <div class="input-fiel">
+    <%= cktext_area :snippet, :description, cols: 40, ckeditor: { toolbar: 'mini' }, value: "Describe your snippet" %>
+  </div>
 
 
   <div class="actions">

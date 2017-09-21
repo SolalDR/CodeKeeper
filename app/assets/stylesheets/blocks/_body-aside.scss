@@ -1,5 +1,5 @@
 .body-aside {
-	width: calc(100% - #{$sidebar-w});
+	width: calc(100% - #{$sidebar-w} - #{$big-pad});
 	margin-left: $sidebar-w;
-	padding: $small-pad;
+	padding: $small-pad $medium-pad;
 }
