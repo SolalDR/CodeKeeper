@@ -21,7 +21,7 @@
 
     <div>
       <div class="materialize form">
-        <div id="pickerContainer" class="input-field form-item--sm">
+        <div id="select_container" class="input-field form-item--sm">
           <select id="select_version">
             <% @snippet.snippet_versions.each_with_index do |v, i| %>
             <% if i == @snippet.snippet_versions.length-1 %>
@@ -51,9 +51,10 @@
 <div id="snippet_show">
   <h1><%= t("activerecord.models.snippet")%> | <span class="code"><%= @snippet.name %></span></h1>
   <p class="private" data-private="<%= @snippet.private %>"><%= t("scope.#{privateLib(@snippet.private)}") %></p>
+  
   <div class="header-show">
     <p id="notice"><%= notice %></p>
-    <p class="info uppercase left" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>
+    <p id="picker" class="info uppercase left" style="background-color: <%= @snippet.lang.bgColor %>; color: <%= @snippet.lang.color %>;"><%= @snippet.lang.lib %></p>
     <select id="select_version" style="border-color: <%= @snippet.lang.bgColor %>;">
       <% @snippet.snippet_versions.each_with_index do |v, i| %>
       <% if i == @snippet.snippet_versions.length-1 %>
@@ -64,6 +65,7 @@
       <% end %>
     </select>
   </div>
+  
   <div class="body-show">
 
     <div class="content">

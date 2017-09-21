@@ -40,6 +40,7 @@ CodemirrorManage = {
       }));
     }
   },
+
   init:function(){
     this.textareas = document.getElementsByClassName("codemirror-content");
     this.launchInstances();
@@ -47,129 +48,94 @@ CodemirrorManage = {
 }
 
 
-function initSideBar(){
-  var btn = document.getElementById("sidebar-right-btn");
-  var sidebar = document.getElementById("sidebar-right");
-  btn.addEventListener("click", function(){
-    toggleDisplay(sidebar, "visible", "hide");
-  }, false)
-}
-
-
-
-
-DropDown = {
-  onClick:function(el, r){
-    var self = this;
-    el.addEventListener("click", function(){
-      for(i=0; i<self.elements.length; i++){
-        if(i!==r){
-          self.elements[i].className = self.elements[i].className.replace("drop-visible", "drop-hidden")
-        }
-      }
-      toggleDisplay(this, "drop-hidden", "drop-visible");
-    }, false)
-  },
-  init:function(){
-    this.elements = document.getElementsByClassName("drop-down-item");
-    for(i=0; i<this.elements.length; i++){
-      this.onClick(this.elements[i], i);
-    }
-  }
-}
-
-
 SnippetVersion = {
   patternEdit: /^(.+?\/)\d+(\/.+)$/,
-  display:function(rank){
-    for(i=0; i<this.codeVersions.length; i++){
-      this.codeVersions[i].classList.remove("visible");
-      this.codeVersions[i].classList.add("hidden");
+
+  display:function(version){
+    if( version != this.currentVersion ){
+      this.hide(this.currentVersion); 
+      version.className = version.className.replace("hidden", "visible");
+      this.currentVersion = version; 
     }
-    if(this.editButton){
-      var nextHref = this.editButton.href.replace(this.patternEdit, "$1"+this.codeVersions[rank].getAttribute("data-id")+"$2");
-      this.editButton.href = nextHref
-    }
-    this.codeVersions[rank].classList.remove("hidden");
-    this.codeVersions[rank].classList.add("visible");
   },
-  iniEvents:function(){
+
+  hide: function(version){
+    if( version.className.match("visible") ){
+      version.className = version.className.replace("visible", "hidden");
+      return;
+    }
+    version.className += " hidden";
+  },
+
+  isDisplayed:  function(rank){
+    if( this.versions[rank].className.match("visible") ){
+      return true; 
+    }
+    return false;
+  },
+
+  initObserver: function(){
+    var self = this; 
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          var listItem = mutation.target.querySelectorAll("li");
+          for(i=0; i<listItem.length; i++){
+            if( listItem[i].className.match("selected") ){
+              if( !self.isDisplayed(i) ){
+                self.display(self.versions[i]);
+              }
+            }
+          }
+        });
+    });
+     
+    observer.observe(this.container, {
+      attributes: true, 
+      subtree: true
+    });
+  }, 
+
+  initEvents:function(){
     var self = this;
+
     this.select.addEventListener("change", function(){
       var index = this.selectedIndex;
-      self.display(index);
+      self.display(self.versions[index]);
     }, false)
+
+    this.initObserver();
   },
+
   init:function(){
     this.select = document.getElementById("select_version");
+    this.container = document.getElementById("select_container"); 
+
     if(this.select){
-      this.codeVersions = document.getElementsByClassName("code-version");
-      this.editButton = document.getElementById("snippet-version-edit");
-      this.select.selectedIndex = this.codeVersions.length-1;
-      for(i=0; i<this.codeVersions.length; i++){
-        if(!this.codeVersions[i].className.match("visible")){
-          this.codeVersions[i].classList.add("hidden");
+
+      this.versions = document.getElementsByClassName("code-version");
+      this.select.selectedIndex = this.versions.length-1;
+      this.currentVersion = this.versions[this.versions.length-1]
+
+      for(i=0; i<this.versions.length; i++){
+        if(!this.versions[i].className.match("visible")){
+          this.hide(this.versions[i]);
         }
       }
-      this.iniEvents();
+
+      this.initEvents();
     }
   }
-}
-
-function initObserver(){
-  var observer = new MutationObserver(function(mutations) {
-    // For the sake of...observation...let's output the mutation to console to see how this all works
-    mutations.forEach(function(mutation) {
-      console.log(mutation.type);
-    });    
-  });
-   
-  // Notify me of everything!
-  var observerConfig = {
-    attributes: true, 
-    childList: true, 
-    characterData: true 
-  };
-   
-  // Node, config
-  // In this case we'll listen to all changes to body and child nodes
-  var targetNode = document.getElementById("pickerContainer");
-  observer.observe(targetNode, observerConfig);
 }
 
 window.addEventListener("turbolinks:load", function(){
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
     $('select').material_select();
-    initObserver();
-    // $('#pickerContainer').on('change', 'select', function(){ console.log("got you"); });
 
-   
     Materialize.updateTextFields();
-  CodemirrorManage.init();
-  // SearchManage.init();
-  DropDown.init();
-  SnippetVersion.init();
-  TabsManage.init();
-  // initSideBar();
+    CodemirrorManage.init();
+    // DropDown.init();
+    SnippetVersion.init();
+    TabsManage.init();
 }, false)
 
-// var item = document.querySelectorAll('.carousel-item');
-// var popup = document.querySelectorAll('.popup');
-// var close = document.querySelectorAll('.close');
-//
-//
-// for (var i = 0; i < item.length; i++){
-//   (function(){
-//     var r = i;
-//     item[r].addEventListener("click", function(){
-//       for(j=0; j<popup.length; j++){
-//         popup[j].style.display = "none";
-//       }
-//       popup[r].style.display = 'block';
-//     }, false);
-//     close[r].addEventListener('click',function(){
-//       popup[r].style.display="none";
-//     });
-//   })();
-// }
