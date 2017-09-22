@@ -1,10 +1,68 @@
+<div class="wrapper form materialize">
+	<%= form_for([@snippet.user, @snippet]) do |f| %>
+
+	<div class="body-top margin-bottom-medium">
+		<h1 class="body-top__content">Nouveau snippet</h1>  
+		<div class="body-top__action-container">
+			
+		</div>
+	</div>
+	<div class="row">
+		<% if @snippet.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+	      <ul>
+	      <% @snippet.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  	<% end %>
+		<div class="col s5 snippet_show_form">
+			
+			<p class="form-item__info">Un Snippet ne peut être composé que d’un seul language. Par défaut le snippet sera noté de la version 1.0.0. Vous pourrez faire évoluer votre snippet plus tard à l’aide de l’utilitaire de version.</p>
+
+			 <div class="input-field form-item--big">
+				<%= f.text_field :name, class:"validate" %>
+				<%= f.label :name %>
+			</div>
+
+			<div class="input-field form-item--big">
+				<% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
+				<%= select_tag "snippet[lang_id]", options_for_select(langs_array, @snippet.lang_id) %>
+				<%= f.label :lang_id %>
+			</div>  
+			
+			<p><%= f.check_box :private, class:"filled-in", checked: true %><%= f.label :private %></p>
+			<p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
+			<div class="divider margin-bottom-medium margin-top-medium"></div>
+			
+			<p class="form-item__info">Rentrer une description de snippet est fortement conseillé. Elle permet au visiteur d’aisément comprendre l’utilité de votre snippet.</p>
+			<div class="">
+				<%= f.cktext_area :description, value: "Describe your snippet", class:"materialize-textarea" %>
+			</div>
+
+		</div>
+		<div class="col s7 snippet_show_ck">
+			<% snip = SnippetVersion.new %>
+			<%= f.fields_for :snippet_versions, snip do |ff| %>
+			<%= ff.text_area :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
+			<%= ff.hidden_field :version %>
+			<%= ff.hidden_field :label, value:"First Version" %>
+			<% end %><!-- fields for -->
+		</div>
+	</div>
 
 
+	<% end %>
 
-  <div class="row snippet-form">
+</div>
+
+
+<!--   <div class="row snippet-form">
     <div class="col-sm-6 col-sm-offset-3">
       <h1><%= t("snippet.actions.new") %></h1>
       <%= render 'form', snippet: @snippet %>
       <%= link_to t("actions.back"), user_snippets_path(user_id: @user), class:"btn btn-dark" %>
     </div>
-  </div>
+  </div> -->

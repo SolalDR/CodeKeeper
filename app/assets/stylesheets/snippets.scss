@@ -1,7 +1,4 @@
-// Place all the styles related to the Snippets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+// CK editor used for Snippet#show
 #code{
   .code-version {
     &.visible {
@@ -13,3 +10,12 @@
   }
 }
 
+//Surchage Materialize
+.snippet_show_form {
+	padding-left: 0 !important; 
+	padding-right: $medium-pad !important;
+}
+.snippet_show_ck {
+	padding-right: 0 !important;
+	height: calc(100vh - 200px);
+}

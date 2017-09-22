@@ -1,4 +1,4 @@
-<%= render template: "application/sidebar",  locals: { user:@user } %>
+<%= render template: "application/sidebar",	locals: { user:@user } %>
 
 <div class="body-aside">
 	
@@ -15,38 +15,39 @@
 	
 		<div class="form margin-top-big">
 		
-		  <% if @snippet.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
-		      <ul>
-		      <% @snippet.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
+			<% if @snippet.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+				<ul>
+				<% @snippet.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
+			</div>
+			<% end %>
 
-		  
-		  <div class="input-field form-item--md">
-		    <%= f.text_field :name, class:"validate" %>
-		    <%= f.label :name %>
-		  </div>
-		  
-		  <div class="input-field form-item--md">
-		    <% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
-		    <%= select_tag "snippet[lang_id]", options_for_select(langs_array, @snippet.lang_id) %>
-		    <%= f.label :lang_id %>
-		  </div>  
+			
+			<div class="input-field form-item--md">
+				<%= f.text_field :name, class:"validate" %>
+				<%= f.label :name %>
+			</div>
+			
+			<div class="input-field form-item--md">
+				<% langs_array = @languages.all.map { |language| [language.lib, language.id] } %>
+				<%= select_tag "snippet[lang_id]", options_for_select(langs_array, @snippet.lang_id) %>
+				<%= f.label :lang_id %>
+			</div>	
 
-		  <p>
-		    <%= f.check_box :private, class:"filled-in", checked: true %>
-		    <%= f.label :private %>
-		  </p>
-		  <p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
-		  <div class="divider margin-bottom-medium margin-top-medium"></div>
-		  <div class="input-fiel">
-		    <%= cktext_area :snippet, :description, cols: 40, ckeditor: { toolbar: 'mini' }, value: "Describe your snippet" %>
-		  </div>
+			<p>
+				<%= f.check_box :private, class:"filled-in", checked: true %>
+				<%= f.label :private %>
+			</p>
+			<p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
+			<div class="divider margin-bottom-medium margin-top-medium"></div>
+			
+			<div class="input-fiel">
+			<%= cktext_area :snippet, :description, cols: 40, ckeditor: { toolbar: 'mini' }, value: "Describe your snippet" %>
+			</div>
 		</div> 
 		<% end %>
 	</div>

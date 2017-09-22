@@ -131,7 +131,8 @@ window.addEventListener("turbolinks:load", function(){
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
     $('select').material_select();
-
+    $('#textarea-material').val('New Text');
+    $('#textarea-material').trigger('autoresize');
     Materialize.updateTextFields();
     CodemirrorManage.init();
     // DropDown.init();

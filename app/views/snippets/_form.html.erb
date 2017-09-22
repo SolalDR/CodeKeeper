@@ -22,22 +22,9 @@
     <%= f.label :lang_id %>
   </div>  
 
-  <% if action_name != "edit" %>
-  <% snip = SnippetVersion.new %>
-  <%= f.fields_for :snippet_versions, snip do |ff| %>
-    <%= ff.text_area :content, placeholder: "Content", class:"codemirror-content", data: {cdMirrorMode:"javascript"} %>
-    <%= ff.hidden_field :version %>
-    <%= ff.hidden_field :label, value:"First Version" %>
-  <% end %><!-- fields for -->
-  <% end %><!-- action name -->
 
-  <p>
-    <%= f.check_box :private, class:"filled-in", checked: true %>
-    <%= f.label :private %>
-  </p>
-  <p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
 
-  <div class="divider margin-bottom-medium margin-top-medium"></div>
+
 
   <div class="input-fiel">
     <%= cktext_area :snippet, :description, cols: 40, ckeditor: { toolbar: 'mini' }, value: "Describe your snippet" %>
