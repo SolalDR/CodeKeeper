@@ -1,10 +1,12 @@
 <div class="wrapper form materialize">
 	<%= form_for([@snippet.user, @snippet]) do |f| %>
 
-	<div class="body-top margin-bottom-medium">
+	<div class="body-top margin-bottom-medium margin-top-small">
 		<h1 class="body-top__content">Nouveau snippet</h1>  
 		<div class="body-top__action-container">
-			
+			<input type="submit" value="Enregister" class="btn btn-colored body-top__action">
+			<%= link_to "Retour aux snippets", user_snippet_path(id: @user), class:"btn btn-colored body-top__action" %>
+
 		</div>
 	</div>
 	<div class="row">
@@ -33,7 +35,7 @@
 				<%= f.label :lang_id %>
 			</div>  
 			
-			<p><%= f.check_box :private, class:"filled-in", checked: true %><%= f.label :private %></p>
+			<p><%= f.check_box :private, class:"filled-in", checked: false %><%= f.label :private %></p>
 			<p class="form-item__mention form-item__mention--danger">Mettre en privé signifie que personne à part vous pourra visualiser ce contenu</p>
 			<div class="divider margin-bottom-medium margin-top-medium"></div>
 			
@@ -58,11 +60,3 @@
 
 </div>
 
-
-<!--   <div class="row snippet-form">
-    <div class="col-sm-6 col-sm-offset-3">
-      <h1><%= t("snippet.actions.new") %></h1>
-      <%= render 'form', snippet: @snippet %>
-      <%= link_to t("actions.back"), user_snippets_path(user_id: @user), class:"btn btn-dark" %>
-    </div>
-  </div> -->

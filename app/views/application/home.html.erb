@@ -13,12 +13,3 @@
     <a href="#lastSnippet" class="scroll">Scroll to lastsnippet</a> -->
   </div>
 </div>
-
-<div class="last-snippets" id="lastSnippet">
-  <h2>Derniers snippets</h2>
-  <div class="snippets list-drop-down">
-    <% @snippets.each do |snippet| %>
-    <%= render "snippets/product-drop-down", {snippet: snippet} %>
-    <% end %>
-  </div>
-</div>

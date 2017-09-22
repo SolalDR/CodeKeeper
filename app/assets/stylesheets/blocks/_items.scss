@@ -1,11 +1,16 @@
 .items {
 	padding: $medium-pad 0; 
+	display: flex;
+	flex-wrap: wrap;
 	&__item {
 		width: 200px;
 		height: 200px;
+		min-width: 200px;
 		box-shadow: 2px 2px 15px rgba(0,0,0,.2);
 		border-radius: $radius;
 		position: relative;
+		margin-right: $medium-pad;
+		margin-bottom: $medium-pad;
 		@include transition(.4s);
 		&:hover {
 			box-shadow: 0 0 15px rgba(0,0,0,.1); 
@@ -51,7 +56,7 @@
 	}
 
 	&__item-content {
-		font-size: 14px;
+		font-size: $size-small;
 		line-height: 1.5em;
 		margin-bottom: $small-pad;
 		p {

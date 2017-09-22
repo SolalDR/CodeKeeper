@@ -1,9 +1,3 @@
-$size : "small", "medium", "big";
-$base : 16px;
-$position: "top", "right", "left", "bottom";
-
-// @for($i from 0 through $size.)
-
 .margin-top-small {
   margin-top: $small-pad;
 }

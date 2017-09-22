@@ -38,7 +38,6 @@
           <div id="overview-item" class="item-body-select">
             <div class="snippets list-drop-down">
               <% @user.snippets.each_with_index do |snippet, i| %>
-              <%= render "snippets/product-drop-down", snippet: snippet %>
               <% end %>
             </div>
           </div>
@@ -48,7 +47,6 @@
               <h2>Snippets</h2>
               <div class="snippets list-drop-down">
                 <% @user.snippets.each do |snippet| %>
-                <%= render "snippets/product-drop-down", snippet: snippet %>
                 <% end %>
               </div>
               <%= link_to t("snippet.actions.new"), new_user_snippet_path(user_id: current_user), class:"btn btn-colored" %>
@@ -63,7 +61,6 @@
           <div id="like-item" class="item-body-select">
             <div class="snippets list-drop-down">
               <% @user.liked_snippets.each_with_index do |snippet, i| %>
-              <%= render "snippets/product-drop-down", snippet: snippet %>
               <% end %>
             </div>
           </div>

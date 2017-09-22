@@ -42,7 +42,7 @@ class SnippetsController < ApplicationController
 
     if !validate_params_create
       flash[:notice] = "Il faut rentrer du contenu dans votre snippet"
-      redirect_to :new_snippet
+      redirect_to new_user_snippet_path(user_id: current_user)
     else
 
       @snippet.user = current_user

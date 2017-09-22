@@ -1,7 +1,65 @@
-<div class="row margin-top-medium snippet-version-form">
-  <div class="col-sm-8 col-sm-offset-2">
-    <h1>Nouvelle version | <span class="code"><%= @snippet.name %></span></h1>
-    <%= render 'form', snippet_version: @snippet_version %>
-    <%= link_to 'Retour', user_snippet_path(user_id: @snippet.user, id: @snippet), class:"btn btn-dark right" %>
-  </div>
+<div class="wrapper form materialize">
+	
+	<%= form_for([@snippet_version.snippet.user, @snippet_version.snippet, @snippet_version ]) do |f| %>
+
+	<%# Title + Actions %>
+	<div class="body-top margin-bottom-medium  margin-top-small">
+		<h1 class="body-top__content">Nouvelle version</h1>  
+		<div class="body-top__action-container">
+			<input type="submit" class="btn btn-colored body-top__action">
+			<%= link_to "Retour au snippet", [@snippet.user, @snippet], class:"btn btn-colored body-top__action" %>
+		</div>
+	</div>
+
+	<%# Main Content %>
+	<div class="row">
+
+		<%# Error Manage %>
+		<% if @snippet_version.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@snippet_version.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+		      <ul>
+		      <% @snippet_version.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+	  	<% end %>
+
+		<%# Form %>	  	
+		<div class="col s5 snippet_show_form">
+
+			<%# Snippet reference for versionning %>
+		  	<%= f.hidden_field :snippet_id %>
+
+		  	<%# snippet_versions.comment %>
+			<div class="input-field form-item--big">
+				<%= f.text_field :comment, class:"validate" %>
+				<%= f.label :comment, value: "Décriver votre nouvelle version" %>
+			</div>
+
+			<%# Version type => Major | Minor | Patch %>
+			<%= f.label :type_version %>
+		    <% SnippetVersion::VERSION_TYPE.each do |v| %>
+		    <p>
+		    <input id="radio-<%= v[0] %>" type="radio" name="snippet_version[type_version]" value="<%= v[1] %>" checked>
+		    <label for="radio-<%= v[0] %>"><%= t("snippet_version.type."+v[0]) %></label></p>
+		    <% end %>
+
+		</div>
+
+		<%# Code %>
+		<div class="col s7 snippet_show_ck">
+		  <div class="code-mirror-container">
+		    <% content = @snippet.snippet_versions.last ? @snippet.snippet_versions.last.content : "" %>
+		    <%= f.label :content %>
+		    <%= f.text_area :content, value: content, class:"codemirror-content", data: {cdMirrorMode: "javascript"} %>
+		  </div>
+		</div>
+
+	</div>
+
+	<%# End form %>
+	<% end %>
+
 </div>

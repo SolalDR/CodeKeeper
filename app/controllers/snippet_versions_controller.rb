@@ -4,6 +4,7 @@ class SnippetVersionsController < ApplicationController
   before_action :set_snippet_version, only: [:show, :edit, :update, :destroy]
   before_action :set_meta_tags_page, only: [:show, :edit, :update, :destroy]
   before_action :check_snippet_version_user, only: [:edit, :update, :destroy, :new]
+  before_action :set_user
 
 
   # GET /snippet_versions/1
@@ -18,7 +19,7 @@ class SnippetVersionsController < ApplicationController
       @snippet = Snippet.find(params[:snippet_id])
       if @snippet.user != current_user
         flash[:notice] = I18n.t("snippet_version.error.owner")
-        redirect_to @snippet
+        redirect_to [@snippet.user, @snippet]
       end
       @snippet_version.snippet_id = params[:snippet_id]
     else
@@ -103,5 +104,9 @@ class SnippetVersionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_version_params
       params.require(:snippet_version).permit(:content, :doc, :comment, :snippet_id, :type_version)
+    end
+
+    def set_user 
+      @user = User.find(params[:user_id]); 
     end
 end

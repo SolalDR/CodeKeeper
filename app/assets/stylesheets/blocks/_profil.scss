@@ -57,7 +57,7 @@
 	padding-bottom: $small-pad+$small-pad/2;
 	&__content {
 		font-style: italic; 
-		font-size: 14px;
+		font-size: $size-small;
 		line-height: 15px;
 		margin-bottom: $medium-pad;
 	}
