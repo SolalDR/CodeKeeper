@@ -7,7 +7,24 @@
 	&__select {
 
 	}
+	
+}
 
+.form-center {
+	width: 550px;
+	padding: 64px;
+	margin: auto;
+}
+
+.form-danger {
+	background-color: #ffecec;
+	border-radius: 10px;
+	margin-top: 32px;
+	padding: 16px 32px;
+	&__title {
+		font-size: 1.5em;
+		margin-top: 10px;
+	}
 }
 
 .form-item {

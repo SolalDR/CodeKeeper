@@ -16,6 +16,10 @@ class SnippetsController < ApplicationController
   def index
     @snippets = @user.snippets; 
     @snippets = @snippets.not_private unless @user.id == current_user.id
+    respond_to do |format|
+      format.html
+      format.json { render :json => @snippets }
+    end
   end
 
   # GET /snippets/1

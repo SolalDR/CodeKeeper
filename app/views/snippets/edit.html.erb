@@ -7,7 +7,7 @@
 		<div class="body-top">
 			<h1 class="body-top__content">Paramètres - <%= @snippet.name %></h1>	
 			<div class="body-top__action-container">
-				<%= link_to t("snippet.actions.back"), user_snippet_path(@snippet), class:"btn btn-colored btn--back body-top__action" %>
+				<%= link_to t("snippet.actions.back"), [@snippet.user, @snippet], class:"btn btn-colored btn--back body-top__action" %>
 				 <%= f.submit t("actions.save") , class:"btn btn-colored body-top__action" %>
 			</div>
 		</div>

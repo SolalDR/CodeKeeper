@@ -14,10 +14,6 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require turbolinks
-//= require Request
-//= require Scaffold
-//= require Search
-//= require Tabs
 //= require codemirror
 //= require codemirror/keymaps/vim
 //= require codemirror/modes/ruby
@@ -26,8 +22,10 @@
 //= require codemirror/modes/css
 //= require ckeditor/init
 
+//= require Request
+//= require Scaffold
 
-// bespin base16-dark hopscotch railscasts
+
 
 CodemirrorManage = {
   cdMirrorInstance : [],
@@ -131,12 +129,12 @@ window.addEventListener("turbolinks:load", function(){
     $(".dropdown-button").dropdown();
     $(".button-collapse").sideNav();
     $('select').material_select();
-    $('#textarea-material').val('New Text');
     $('#textarea-material').trigger('autoresize');
     Materialize.updateTextFields();
     CodemirrorManage.init();
-    // DropDown.init();
     SnippetVersion.init();
-    TabsManage.init();
 }, false)
+
+//= require vue
+//= require snippets
 

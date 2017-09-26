@@ -22,50 +22,8 @@
         <% end %>
       </div>
     </div>
-    <div id="tabs" class="body-content">
-      <div class="head-select">
-        <ul>
-          <span id="bar"></span>
-          <li class="item-head-select"><a href="#overview-item">Overview</a></li>
-          <li class="item-head-select"><a href="#snippet-item">Snippets</a></li>
-          <li class="item-head-select"><a href="#object-item">Objets</a></li>
-          <li class="item-head-select"><a href="#like-item">Likes</a></li>
-          <li class="item-head-select"><a href="#setting-item">Réglages</a></li>
-        </ul>
-      </div>
+    <div id="" class="body-content">
       <div class="body-select">
-        <div id="slide" class="container-select">
-          <div id="overview-item" class="item-body-select">
-            <div class="snippets list-drop-down">
-              <% @user.snippets.each_with_index do |snippet, i| %>
-              <% end %>
-            </div>
-          </div>
-
-
-          <div id="snippet-item" class="item-body-select">
-              <h2>Snippets</h2>
-              <div class="snippets list-drop-down">
-                <% @user.snippets.each do |snippet| %>
-                <% end %>
-              </div>
-              <%= link_to t("snippet.actions.new"), new_user_snippet_path(user_id: current_user), class:"btn btn-colored" %>
-          </div>
-
-
-          <div id="object-item" class="item-body-select">
-            I'm Object
-          </div>
-
-
-          <div id="like-item" class="item-body-select">
-            <div class="snippets list-drop-down">
-              <% @user.liked_snippets.each_with_index do |snippet, i| %>
-              <% end %>
-            </div>
-          </div>
-
-
           <div id="setting-item" class="item-body-select">
             <p class="margin-top-medium margin-bottom-medium">Modifier vos informations de connexions ainsi que vos donnée personnelles</p>
             <% if current_user %>
@@ -76,6 +34,3 @@
         </div>
       </div>
     </div>
-
-  </div>
-</div>

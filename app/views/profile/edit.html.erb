@@ -1,44 +1,39 @@
-<div class="full-height">
-  <div class="row form-devise">
-    <div class="form col-sm-6 col-sm-offset-3">
+    <div class="form materialize form-center">
+      <%= link_to t("actions.back"), :back, class:"btn btn-dark margin-top-medium right" %>
       <h2><%= t "actions.edit" %> <%= @user.fullname %></h2>
       <%= form_for @user, url: {action: "update"} do |f| %>
 
-        <div class="form-group test">
+        <div class="input-field">
           <%= f.label :nickname %>
-          <%= f.text_field :nickname, class:"form-control" %>
+          <%= f.text_field :nickname, class:"validate" %>
         </div>
 
-        <div class="form-group">
+        <div class="input-field">
           <%= f.label :firstname %>
-          <%= f.text_field :firstname, class:"form-control" %>
+          <%= f.text_field :firstname, class:"validate" %>
         </div>
 
-        <div class="form-group">
+        <div class="input-field">
           <%= f.label :lastname %>
-          <%= f.text_field :lastname, class:"form-control" %>
+          <%= f.text_field :lastname, class:"validate" %>
         </div>
 
-        <div class="form-group">
+        <div class="input-field">
           <%= f.label :url_site %>
-          <%= f.text_field :url_site, class:"form-control" %>
+          <%= f.text_field :url_site, class:"validate" %>
         </div>
 
-        <div class="form-group">
+        <div class="input-field">
           <%= f.label :url_github %>
-          <%= f.text_field :url_github, class:"form-control" %>
+          <%= f.text_field :url_github, class:"validate" %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :description %>
-          <%= f.text_field :description, class:"form-control" %>
+        <div class="input-field">
+          <%= f.cktext_area :description, class:"materialize-textarea" %>
         </div>
 
-        <div class="actions">
-          <%= link_to t("actions.back"), :back, class:"btn btn-dark" %>
+        <div class="actions margin-top-medium">
           <%= f.submit t("devise.registrations.edit.update"), class:"btn btn-colored" %>
         </div>
       <% end %>
     </div>
-  </div>
-</div>

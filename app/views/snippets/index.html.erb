@@ -13,7 +13,7 @@
 	
 	<%= render template: "application/search-helper",  locals: { user:@user, snippets: @snippets } %>
 
-	 <div class="items">
+	 <div id="snippetsList" class="items">
 	 	 <% @snippets.each do |snippet| %>
     		<div class="items__item">
     			<div class="items__item-head">
@@ -42,6 +42,8 @@
     	<p>Vous n'avez pas encore de snippets ! </p>
     	<%= link_to "Créer un snippet !", new_user_snippet_path(user_id: @user), class:"btn btn-colored margin-top-small" %>
     	<% end %>
+
+    	<button @click="onClickButton">Decode</button>
 	 </div>
 
 </div>
